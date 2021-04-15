@@ -4,4 +4,4 @@ let controllers = require('../controllers/indexController');
 
 router.get('/', controllers.login)
 
-module.exports = router; 
+module.exports = router;
