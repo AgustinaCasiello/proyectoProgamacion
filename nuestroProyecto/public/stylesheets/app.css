@@ -424,6 +424,10 @@ hr {
 }
 
 /*====== Formularios ======*/
+.search-form{
+  display: flex;
+  flex-direction: column;
+}
 .col-7-col-md-6{
   background: rgba(143, 141, 141, 0.637);
   border-radius: 10px;
