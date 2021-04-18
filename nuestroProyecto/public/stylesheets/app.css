@@ -424,6 +424,13 @@ hr {
 }
 
 /*====== Formularios ======*/
+.col-7-col-md-6{
+  background: rgba(143, 141, 141, 0.637);
+  border-radius: 10px;
+  box-shadow: -4px 0 15px rgb(204 204 204 / 37%);
+  width: 50%;
+  margin: auto;
+}
 .form-label {
   display: inline-block;
   font-size: 1.6em;
