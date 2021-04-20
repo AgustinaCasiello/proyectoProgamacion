@@ -14,6 +14,16 @@ const controller = {
     profile: (req,res) => {
         res.render('profile', {title: 'Profile'});
     },
+    productAdd: (req,res) => {
+        res.render('productAdd', {title: 'ProductAdd'});
+    },
+    search: (req,res) => {
+        res.render('search', {title: 'Search'});
+    },
+    profileEdit: (req,res) => {
+        res.render('profileEdit', {title: 'ProfileEdit'});
+    },
+    
     
 };
  
