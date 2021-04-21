@@ -10,9 +10,6 @@ let loginRouter = require('./routes/login');
 let registerRouter = require('./routes/register');
 let productRouter = require('./routes/product');
 let profileRouter = require('./routes/profile');
-let searchRouter = require('./routes/search');
-let productAddRouter = require('./routes/productAdd');
-let profileEditRouter = require('./routes/profileEdit');
 
 
 let app = express();
@@ -33,9 +30,6 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/product', productRouter);
 app.use('/profile', profileRouter);
-app.use('/search', searchRouter);
-app.use('/productAdd', productAddRouter);
-app.use('/profileEdit', profileEditRouter);
 
 
 
