@@ -30,11 +30,5 @@ const autos = {
             descripción: "Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
             image: "/images/autos/r8.jfif",
         },
-        {
-            id: 5,
-            nombre: "",
-            descripción: "Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
-            image: "",
-        }
     ]
 }; 
