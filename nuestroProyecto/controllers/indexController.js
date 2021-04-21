@@ -18,7 +18,7 @@ const controller = {
         res.render('productAdd', {title: 'ProductAdd'});
     },
     search: (req,res) => {
-        res.render('search', {title: 'Search'});
+        res.render('search-results', {title: 'Search'});
     },
     profileEdit: (req,res) => {
         res.render('profileEdit', {title: 'ProfileEdit'});
