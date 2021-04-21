@@ -1,3 +1,6 @@
+let autos = require('../products/nuestrosProductos');
+console.log(autos);
+
 const controller = {
     index: (req,res) => {
         res.render('index', {title: 'Index'});
@@ -18,7 +21,7 @@ const controller = {
         res.render('productAdd', {title: 'ProductAdd'});
     },
     search: (req,res) => {
-        res.render('search-results', {title: 'Search'});
+        res.render('search-results', {autos: autos.lista});
     },
     profileEdit: (req,res) => {
         res.render('profileEdit', {title: 'ProfileEdit'});
