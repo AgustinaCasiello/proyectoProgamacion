@@ -20,15 +20,12 @@ const autos = {
         },
         {
             id: 3,
-            nombre: "",
-            descripción: "Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
-            image: "",
-        },
-        {
-            id: 4,
             nombre: "Audi R8 V10",
             descripción: "Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
             image: "/images/autos/r8.jfif",
         },
     ]
 }; 
+
+
+module.exports = autos;
