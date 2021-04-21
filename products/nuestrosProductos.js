@@ -1,5 +1,0 @@
-const autos = {
-    lista: [
-        
-    ]
-}
