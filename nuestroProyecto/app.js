@@ -5,12 +5,13 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
 let loginRouter = require('./routes/login');
 let registerRouter = require('./routes/register');
 let productRouter = require('./routes/product');
 let profileRouter = require('./routes/profile');
-
+let profileEditRouter = require('./routes/profile-edit');
+let searchRouter = require('./routes/search-results');
+let productAddRouter = require('./routes/product-add');
 
 let app = express();
 
@@ -25,11 +26,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/product', productRouter);
 app.use('/profile', profileRouter);
+app.use('/profile-edit', profileEditRouter);
+app.use('/search-results', searchRouter);
+app.use('/product-add', productAddRouter);
+
 
 
 
