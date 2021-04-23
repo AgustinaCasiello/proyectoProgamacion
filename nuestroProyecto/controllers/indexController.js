@@ -26,8 +26,6 @@ const controller = {
     profileEdit: (req,res) => {
         res.render('profileEdit', {title: 'ProfileEdit'});
     },
-    
-    
 };
  
 module.exports = controller; 
