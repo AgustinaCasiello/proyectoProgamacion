@@ -54,10 +54,6 @@ img {
   width: 100%;
 }
 
-img.foto-perfil{
-  border-radius: 50%;
-}
-
 input,
 textarea {
   font-family: inherit;
@@ -485,6 +481,11 @@ textarea.form-input {
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
+  color: white;
+}
+
+.perfill{
+  color: white;
 }
 
 .btn{
