@@ -3,7 +3,7 @@ let autos = require('../products/nuestrosProductos');
 
 const controller = {
     index: (req,res) => {
-        res.render('index');        
+        res.render('index', {autos: autos.lista});        
     },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
