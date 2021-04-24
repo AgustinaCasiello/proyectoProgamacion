@@ -54,6 +54,10 @@ img {
   width: 100%;
 }
 
+img.foto-perfil{
+  border-radius: 50%;
+}
+
 input,
 textarea {
   font-family: inherit;
