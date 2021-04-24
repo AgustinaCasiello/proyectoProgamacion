@@ -1,14 +1,13 @@
 let autos = require('../products/nuestrosProductos');
-console.log(autos);
+
 
 const controller = {
     index: (req,res) => {
-        let misAutos = []
+        let misAutos = [];
         for (let i = 0; i < 4; i++) {
-            misAutos.push(autos.lista)            
+            misAutos.push(autos.lista[i])               
         }
-        res.render('index', {nuestrosProdutos: autos.lista});
-  
+        res.render('index', {nuestrosProductos: misAutos});        
     },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
