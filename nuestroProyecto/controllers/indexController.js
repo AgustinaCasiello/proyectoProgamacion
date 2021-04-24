@@ -3,9 +3,8 @@ let autos = require('../products/nuestrosProductos');
 
 const controller = {
     index: (req,res) => {
-        res.render('index', {nuestrosProductos: autos});  
+        res.render('index');        
     },
-
     login: (req,res) => {
         res.render('login', {title: 'Login'});
     },
@@ -13,7 +12,12 @@ const controller = {
         res.render('register');
     },
     product: (req,res) => {
-        res.render('product', {title: 'product'});
+            let idProducto = req.params.id; 
+            autos.populares.forEach(element => {
+                if (element.id == idProducto) {
+                    res.render('product', {product: element})
+                } 
+            });
     },
     profile: (req,res) => {
         res.render('profile', {title: 'Profile'});
@@ -22,7 +26,7 @@ const controller = {
         res.render('productAdd', {title: 'ProductAdd'});
     },
     search: (req,res) => {
-        res.render('search-results', {autos: autos.lista});
+        res.render('search-results', {autos: autos.populares});
     },
     profileEdit: (req,res) => {
         res.render('profileEdit', {title: 'ProfileEdit'});
