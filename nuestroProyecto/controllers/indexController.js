@@ -3,12 +3,9 @@ let autos = require('../products/nuestrosProductos');
 
 const controller = {
     index: (req,res) => {
-        let misAutos = [];
-        for (let i = 0; i < 4; i++) {
-            misAutos.push(autos.lista[i])               
-        }
-        res.render('index', {nuestrosProductos: misAutos});        
+        res.render('index', {nuestrosProductos: autos});  
     },
+
     login: (req,res) => {
         res.render('login', {title: 'Login'});
     },
