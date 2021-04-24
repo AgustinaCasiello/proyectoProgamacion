@@ -13,7 +13,7 @@ const controller = {
     },
     product: (req,res) => {
             let idProducto = req.params.id; 
-            autos.populares.forEach(element => {
+            autos.lista.forEach(element => {
                 if (element.id == idProducto) {
                     res.render('product',{ product: element})
                 } 
@@ -26,7 +26,7 @@ const controller = {
         res.render('productAdd', {title: 'ProductAdd'});
     },
     search: (req,res) => {
-        res.render('search-results', {autos: autos.populares});
+        res.render('search-results', {autos: autos.lista});
     },
     profileEdit: (req,res) => {
         res.render('profileEdit', {title: 'ProfileEdit'});
