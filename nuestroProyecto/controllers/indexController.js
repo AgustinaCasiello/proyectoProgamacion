@@ -3,7 +3,12 @@ console.log(autos);
 
 const controller = {
     index: (req,res) => {
-        res.render('index', {title: 'Index'});
+        let misAutos = []
+        for (let i = 0; i < 4; i++) {
+            misAutos.push(autos.lista)            
+        }
+        res.render('index', {nuestrosProdutos: autos.lista});
+  
     },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
