@@ -496,6 +496,24 @@ textarea.form-input {
   color: #fff;
 }
 
+/*Footer*/
+
+.footer-data {
+  width: 95%;
+  margin: auto;
+}
+
+.footer-data h2{
+  color: white;
+}
+
+.footer-data p{
+  color: white;
+}
+
+.footer-data .fas{
+  color: white;
+}
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
@@ -541,10 +559,8 @@ textarea.form-input {
 
   .main-footer {
     padding: 40px 0;
+    background-color: #000000;
+    ;
   }
 
-  .footer-data {
-    width: 95%;
-    margin: auto;
-  }
 }
