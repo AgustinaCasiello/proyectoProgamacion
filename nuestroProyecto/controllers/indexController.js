@@ -15,7 +15,7 @@ const controller = {
             let idProducto = req.params.id; 
             autos.populares.forEach(element => {
                 if (element.id == idProducto) {
-                    res.render('product', {product: element})
+                    res.render('product',{ product: element})
                 } 
             });
     },

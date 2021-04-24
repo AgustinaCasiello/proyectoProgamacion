@@ -1,9 +1,9 @@
 const autos = {
-    lista: [
+    populares: [
         {
             id: 0,
             nombre: "Audi S3",
-            descripcion: "escripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
+            descripcion: "Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
             image: "/images/autos/840_560.jpg",
             comentario: '12 comentarios'
         },
@@ -27,7 +27,9 @@ const autos = {
             descripcion: "Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex",
             image: "/images/autos/r8.jfif",
             comentario: '12 comentarios'
-        },
+        }
+    ],
+    favoritos:[
         {
             id: 4,
             nombre: "BMW X6",
