@@ -1,7 +1,6 @@
-let express = require('express');
-let router = express.Router();
-let controllers = require('../../views/partials/head.ejs');
+window.onload = function() {
+    let siguiendo = getElementById("siguiendo");
+    let seguir = getElementById("seguir");
 
-router.get('/', controllers.index)
-
-module.exports = router;
+    document.getElementById("seguir").onclick = siguiendo; 
+}
