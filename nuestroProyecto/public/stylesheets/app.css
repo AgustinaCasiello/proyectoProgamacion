@@ -498,7 +498,7 @@ textarea.form-input {
 
 /*Footer*/
 .footer-data {
-  width: 95%;
+  width: 100%;
   margin: auto;
 }
 
@@ -559,7 +559,6 @@ textarea.form-input {
   .main-footer {
     padding: 40px 0;
     background-color: #000000;
-    ;
   }
 
 }
