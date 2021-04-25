@@ -25,7 +25,7 @@ const autos = {
             id: 3,
             nombre: "Audi R8 V10",
             descripcion: "El Audi R8 se comercializa con un único propulsor, un V10 atmosférico de 5,2 litros, con lubricación por cárter seco e inyección directa. Se ofrece en dos versiones de potencia, 570 CV y 620 CV. Esta última versión corresponde al Audi R8 V10 Performance quattro, el modelo más potente de la gama R8.",
-            image: "/images/autos/r8.jfif",
+            image: "/images/autos/r8.jpg",
             comentario: '12 comentarios'
         },
         {

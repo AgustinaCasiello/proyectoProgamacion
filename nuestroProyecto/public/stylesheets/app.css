@@ -72,6 +72,13 @@ hr {
   color: white;
 }
 
+a.main-header_credit-link{
+  font-family: 'Yellowtail', cursive;
+  font-style: italic;
+  letter-spacing: 2px;
+  font-size: medium;
+}
+
 .main-header_home-link,
 .main-header_credit-link {
   display: block;
@@ -124,7 +131,7 @@ hr {
 }
 
 .main-navbar {
-  margin-top: 20px;
+  margin-top: 10px;
   display: none;
   color: white
 }
@@ -141,6 +148,7 @@ hr {
   cursor: pointer;
   font-size: 1em;
   color: white;
+  font-family: 'Sulphur Point', sans-serif;
 }
 
 .logout:hover{
@@ -192,8 +200,6 @@ hr {
 
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
-  min-height: 80px;
-  max-height: 80px;
 }
 
 .product-box_data {
@@ -206,8 +212,15 @@ hr {
 
 .product-box_data h2 {
   font-size: 2.4em;
-  font-weight: 300;
   margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+h2.products-title {
+  font-family: 'Sulphur Point', sans-serif;
+  font-size: x-large;
+  margin-bottom: 0;
+  color: white;
 }
 
 .product-box_data span {
@@ -263,11 +276,16 @@ hr {
   box-shadow: 0 0 5px var(--green);
 }
 
+
+div.container .products-wrapper {
+  margin-top: 0;
+}
+
+
 /*====== Footer ======*/
 .main-footer {
   background-color: #ffffff;
   padding: 20px 0;
-  margin-top: 80px;
 }
 
 .footer-data {
@@ -302,6 +320,9 @@ hr {
   padding: 15px 0;
 }
 
+.row p{
+  font-family: 'Sulphur Point', sans-serif;
+}
 
 /*====== Product Detail ======*/
 .product-detail {
@@ -485,10 +506,12 @@ textarea.form-input {
   font-size: 25px;
   margin-bottom: 10px;
   color: white;
+  font-family: 'Raleway', sans-serif;
 }
 
 .perfill{
   color: white;
+  font-family: 'Raleway', sans-serif;
 }
 
 .btn{
@@ -499,6 +522,7 @@ textarea.form-input {
 }
 
 /*Footer*/
+
 .footer-data {
   width: 100%;
   margin: auto;
@@ -506,6 +530,7 @@ textarea.form-input {
 
 .footer-data h2{
   color: white;
+  font-family: 'Raleway', sans-serif;
 }
 
 .footer-data p{
@@ -538,6 +563,7 @@ textarea.form-input {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    font-family: 'Sulphur Point', sans-serif;;
   }
 
   .left-navbar a,
