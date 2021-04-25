@@ -514,6 +514,10 @@ textarea.form-input {
   font-family: 'Raleway', sans-serif;
 }
 
+.siguiendo {
+  display: none;
+}
+
 .btn{
   background-color: #1259c3;
   padding: 10px 20px;

@@ -1,7 +1,7 @@
-let express = require('express');
-let router = express.Router();
-let controllers = require('../../views/partials/head.ejs');
+window.onload = function(){
+    function callMe() {
+        this.seguir = "siguiendo";
+    }
+    document.getElementsByClassName("seguir").onclick = callMe;
+}
 
-router.get('/', controllers.index)
-
-module.exports = router;
