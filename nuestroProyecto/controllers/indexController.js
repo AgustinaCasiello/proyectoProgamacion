@@ -1,6 +1,5 @@
 let autos = require('../products/nuestrosProductos');
 
-
 const controller = {
     index: (req,res) => {
         res.render('index', {autos: autos.lista});        
@@ -15,12 +14,12 @@ const controller = {
             let idProducto = req.params.id; 
             autos.lista.forEach(element => {
                 if (element.id == idProducto) {
-                    res.render('product',{ product: element})
+                    res.render('product',{product: element})
                 } 
             });
     },
     profile: (req,res) => {
-        res.render('profile', {title: 'Profile'});
+        res.render('profile', {autos: autos.lista});
     },
     productAdd: (req,res) => {
         res.render('product-add', {title: 'ProductAdd'});
