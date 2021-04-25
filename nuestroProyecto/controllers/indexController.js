@@ -23,13 +23,13 @@ const controller = {
         res.render('profile', {title: 'Profile'});
     },
     productAdd: (req,res) => {
-        res.render('productAdd', {title: 'ProductAdd'});
+        res.render('product-add', {title: 'ProductAdd'});
     },
     search: (req,res) => {
         res.render('search-results', {autos: autos.lista});
     },
     profileEdit: (req,res) => {
-        res.render('profileEdit', {title: 'ProfileEdit'});
+        res.render('profile-edit', {title: 'ProfileEdit'});
     },
 };
  
