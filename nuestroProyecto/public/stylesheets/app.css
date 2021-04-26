@@ -431,6 +431,12 @@ div.container .products-wrapper {
 .action-button.delete {
   background-color: rgb(248, 69, 37);
 }
+
+#siguiendo{
+  background-color: white;
+  color: blue;
+}
+
 .comments {
   padding: 30px 15px 15px 0;
 }

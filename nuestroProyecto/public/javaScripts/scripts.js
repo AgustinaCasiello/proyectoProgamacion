@@ -1,6 +1,9 @@
 window.onload = function() {
-    let siguiendo = getElementById("siguiendo");
-    let seguir = getElementById("seguir");
+    let siguiendo = document.querySelector('#siguiendo');
+    let seguir = document.querySelector('#seguir');
 
-    document.getElementById("seguir").onclick = siguiendo; 
-}
+    seguir.addEventListener('click', function(){
+        siguiendo.style.display = "block";
+        seguir.style.display = "none"; 
+    });
+};
