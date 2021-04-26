@@ -464,6 +464,10 @@ div.container .products-wrapper {
   font-size: 1.7em;
 }
 
+.agregado {
+  display: none;
+}
+
 /*====== Formularios ======*/
 .search-form{
   display: flex;
