@@ -1,4 +1,4 @@
-const autos = {
+const autos = {  
     lista: [
         {
             id: 0,
