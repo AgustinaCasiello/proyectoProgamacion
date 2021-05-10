@@ -97,6 +97,23 @@ INSERT INTO comentarios VALUES (DEFAULT,('2021-02-11'),8,10,'No se para que veo 
 INSERT INTO comentarios VALUES (DEFAULT,('2021-03-01'),9,10,'Lo quiero');
 INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),2,10,'Es electrico?');
 
+ALTER TABLE productos
+ADD descripcion VARCHAR(5000) NOT NULL;
+
+UPDATE productos SET descripcion = 'El Audi A3 es un automóvil del segmento C producido por el fabricante alemán Audi desde 1996, abarcando 4 generaciones hasta el momento. Desde finales de verano de 2013 se ofrece también un A3 con carrocería sedán (o Limousine)​. Tiene 4.46 metros de largo, es decir casi 25 cm menos largo que un A4​.' WHERE id = 1;
+UPDATE productos SET descripcion = 'El motor 2.0 TFSI tiene una potencia de 310 CV y 400 Nm de par. De esta forma, el nuevo Audi S3 acelera de 0 a 100 km/h en solo 4,6 segundos y alcanza la velocidad máxima de 250 km/h. El Nuevo Audi S3 Sportback está equipado con una transmisión S tronic de siete velocidades.' WHERE id = 2;
+UPDATE productos SET descripcion = 'El Audi A3 es el compacto de la marca de los cuatro aros desde 1996, año en el que fue presentada la primera de sus ediciones. Es el precursor del segmento C premium, segmento que a día de hoy comparte con sus máximos rivales, también de origen alemán. A principios de 2020 se ha presentado la última de sus generaciones, la cuarta, con importantes cambios en todos los niveles.' WHERE id = 3;
+UPDATE productos SET descripcion = 'El Audi R8 se comercializa con un único propulsor, un V10 atmosférico de 5,2 litros, con lubricación por cárter seco e inyección directa. Se ofrece en dos versiones de potencia, 570 CV y 620 CV. Esta última versión corresponde al Audi R8 V10 Performance quattro, el modelo más potente de la gama R8.' WHERE id = 4;
+UPDATE productos SET descripcion = 'El X6 es un modelo con estética de todocamino coupé pero enfocado a un uso por asfalto. Comparte un gran número de elementos mecánicos y estructurales con el BMW X5. La actual generación, la tercera, salió al mercado a principios de 2020 y cuenta con unas medidas de 4,94 metros de largo, 2 metros de ancho y 1,70 de alto. Su maletero cubica 580 litros. Todas las versiones a la venta cuentan con tracción integral xDrive de serie.' WHERE id = 5;
+UPDATE productos SET descripcion = 'Vehículo dinámico y bien equilibrado. Equipado para hacer de tu viaje toda una experiencia: posee el nuevo i_Cockpit, caja automática de seis velocidades, dispositivo all-in-one con pantalla táctil, techo de cielo panorámico. Además, incorpora tecnologías de punta para mejorar su rendimiento, usabilidad y seguridad, como adaptación automática al entorno luminoso, mantenimiento línea de carril y alerta de descanso.' WHERE id = 6;
+UPDATE productos SET descripcion = 'En esta generación 2020, ofrece muchas mejoras destacables: un diseño atractivo, un motor más potente (aunque también más eficiente), una nueva caja no-tan-CVT, un confort de marcha muy superior y un equipamiento de seguridad ejemplar (aunque sólo en las versiones SEG).' WHERE id = 7;
+UPDATE productos SET descripcion = 'Motor V6 de origen Ferrari. Un propulsor que con un sistema biturbo desarrolla la tremenda potencia de 510 CV. Este propulsor le permite una aceleración de 0 a 100 km/h de sólo 3,9 segundos, y una velocidad máxima posiblemente superior a los 300 km/h.' WHERE id = 8;
+UPDATE productos SET descripcion = 'El Mercedes-AMG A 45 S 4MATIC+ de 421 caballos es el Mercedes-Benz Clase A más potente y cuesta 74 000 euros. Su aspecto, si no se recurre a la lista de opciones, no dista mucho del que se puede conseguir en cualquier Clase A con el paquete decorativo opcional AMG Line. Sin embargo hay algo en su estética que delata que estamos ante un vehículo muy especial. Quizá sea la parrilla y las entradas de aire inferiores, que tienen un diseño exclusivo.' WHERE id = 9;
+UPDATE productos SET descripcion = 'Motor naftero V8 4.0 biturbo, con 612 cv de potencia y 850 Nm de torque. Caja automática de nueve velocidades y tracción integral 4Matic+, que incluye distribución completa de torque (incluyendo tracción 100% trasera) y Drifting Mode (ver video abajo). Acelera de 0 a 100 km/h en 3,4 segundos y su velocidad máxima está limitada a 250 km/h.' WHERE id = 10;
+
+
+
+
 
 
 

@@ -25,10 +25,8 @@ const controller = {
     },
     product: (req,res) => {
         let idProducto = req.params.id; 
-        autos.lista.forEach(element => {
-            if (element.id == idProducto) {
-                res.render('product',{product: element})
-            } 
+       db.Producto.findByPk(idProducto).then(resultado =>{
+        res.render('product', {product: resultado})
         });
     },
     profile: (req,res) => {
