@@ -1,8 +1,21 @@
 let autos = require('../products/nuestrosProductos');
+let db = require('../database/models');
+const Op = db.Sequelize.Op;
 
 const controller = {
-    index: (req,res) => {
-        res.render('index', {autos: autos.lista});        
+    index: (req, res) => {
+        db.Producto.findAll({ 
+            order: [
+                ['nombre', 'ASC'],
+              ],
+            limit: 10 
+        }
+        ).then(resultado => {
+            res.render('index', {autos: resultado});
+        })
+        .catch(error => {
+            console.log(error)
+        })
     },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
@@ -11,12 +24,12 @@ const controller = {
         res.render('register');
     },
     product: (req,res) => {
-            let idProducto = req.params.id; 
-            autos.lista.forEach(element => {
-                if (element.id == idProducto) {
-                    res.render('product',{product: element})
-                } 
-            });
+        let idProducto = req.params.id; 
+        autos.lista.forEach(element => {
+            if (element.id == idProducto) {
+                res.render('product',{product: element})
+            } 
+        });
     },
     profile: (req,res) => {
         res.render('profile', {autos: autos.lista});
