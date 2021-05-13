@@ -8,7 +8,7 @@ const controller = {
             order: [
                 ['nombre', 'ASC'],
               ],
-            limit: 10 
+            limit: 20 
         }
         ).then(resultado => {
             res.render('index', {autos: resultado});
@@ -16,6 +16,27 @@ const controller = {
         .catch(error => {
             console.log(error)
         })
+    },
+    buscar: (req, res) => {
+        let filtro = {
+            where: {
+                nombre: {[Op.like]:'%' + req.query.search + '%'}
+            }            
+        }
+
+        db.Producto.findAll(filtro).then(resultado => {
+            res.render('search-results', {lista: resultado});
+        });
+
+    },
+    crear: (req, res) => {
+        db.Producto.create({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            image_URL: req.body.image_URL,
+        }).then(productoAgregado => {
+            res.redirect('/product/' + productoAgregado.id)
+        }) 
     },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
@@ -35,9 +56,7 @@ const controller = {
     productAdd: (req,res) => {
         res.render('product-add', {title: 'ProductAdd'});
     },
-    search: (req,res) => {
-        res.render('search-results', {autos: autos.lista});
-    },
+
     profileEdit: (req,res) => {
         res.render('profile-edit', {title: 'ProfileEdit'});
     },

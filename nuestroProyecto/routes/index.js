@@ -6,4 +6,5 @@ let db = require('../database/models')
 
 router.get('/', controllers.index)
 
+
 module.exports = router;
