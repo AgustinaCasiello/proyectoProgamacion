@@ -38,6 +38,20 @@ const controller = {
             res.redirect('/product/' + productoAgregado.id)
         }) 
     },
+    borrar: (req, res) => {
+        db.Producto.destroy({
+            where: {
+                id: req.body.id,
+            }
+        })//.then(() => {
+            //let alerta = prompt("¿Seguro de que deseas eliminar el producto?");
+            //if(alerta == null || alerta == "")
+        //})
+        .then(() => {
+            res.redirect('/')
+        })
+        .catch(error => console.log(error));
+    },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
     },
