@@ -13,6 +13,10 @@
 			<p class="product-detail-description1">
 				<a href="http://localhost:3000/product-add" >Editar</a>
 			</p>
+			<form action="/borrar" method="POST">
+				<input type="hidden" name="id" value="<%= product.id %>">
+				<input type="submit" value="Borrar" class="botonBorrar">
+		  </form>
 		</div>
 		<div class="product-detail">
 			<div class="row">
