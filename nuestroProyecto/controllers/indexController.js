@@ -33,6 +33,7 @@ const controller = {
         db.Producto.create({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
+            fecha_creacion : req.body.fecha_creacion,
             image_URL: req.body.image_URL,
         }).then(productoAgregado => {
             res.redirect('/product/' + productoAgregado.id)
@@ -72,6 +73,25 @@ const controller = {
 
     profileEdit: (req,res) => {
         res.render('profile-edit', {title: 'ProfileEdit'});
+    },
+    editarGet : (req,res) => {
+        db.Producto.findByPk(req.query.id).then(autoEdit=>{
+            res.render ('productEdit',{autoEditado: autoEdit})
+        })
+    },
+    editarPost : (req, res) => {
+        db.Producto.update({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            fecha_creacion : req.body.fecha_creacion,
+            image_URL: req.body.image_URL,
+        },{
+            where: {
+                id: req.body.id
+            }
+        }).then(() => {
+            res.redirect('/product/:id');
+        });
     },
 };
  

@@ -11,11 +11,11 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
+				<h2 class="products-title">Editar producto</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="col-7-col-md-6">
-				<form action="/product-add" method="POST" class="search-form">
+				<form action="/editar" method="POST" class="search-form">
 					<p>
 						<label class="form-label" for="nombre">Nombre</label>
 						<input class= "form-input" type="text" name="nombre">
@@ -34,7 +34,8 @@
 
 					</p>
 					<p>
-					<input class= "form-input" type="submit" value="Enviar">
+                        <input type="hidden" name="id" value="<%= product.id %>">
+                        <input type="submit" value="editar">                  
 					</p>
 						
 				</form>		
