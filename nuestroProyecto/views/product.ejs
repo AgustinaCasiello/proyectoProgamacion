@@ -12,7 +12,6 @@
 			<h2 class="products-title"><%= product.nombre%></h2>
 			<div class="botones">
 				<a href="http://localhost:3000/product-add" class="product-detail-description1">Editar</a>
-				  </form>
 				<form action="/borrar" method="POST">
 					<input type="hidden" name="id" value="<%= product.id %>">
 					<input type="submit" value="Borrar" class="botonBorrar">
