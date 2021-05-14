@@ -52,6 +52,15 @@ const controller = {
         })
         .catch(error => console.log(error));
     },
+    editar: (req, res) => {
+        db.Producto.update({
+            where: {
+                id: req.body.id,
+            }
+        }).then((productoEditado) => {
+            res.redirect('/product/' + productoEditado)
+        })
+    },
     login: (req,res) => {
         res.render('login', {title: 'Login'});
     },

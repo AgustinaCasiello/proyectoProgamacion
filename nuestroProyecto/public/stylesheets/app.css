@@ -355,17 +355,6 @@ div.container .products-wrapper {
   color:black;
 }
 
-.product-detail-description1{
-  border: 1px solid white;
-  border-radius: 10%;
-  background-color: #5f5f5f;
-  color: white;
-  font-family: var(--base-font-family);
-  font-size: 2em;
-  padding: 5px 15px;
-  margin-left: auto;
-}
-
 .product-detail-price {
   font-size: 5.5em;
   margin: 10px 0;
@@ -480,6 +469,22 @@ div.container .products-wrapper {
   font-size: 2em;
   font-family: 'Raleway', sans-serif;
   padding: 5px 15px;
+}
+
+.botones {
+  margin-left: auto;
+  display: flex;
+}
+
+.product-detail-description1{
+  border: 1px solid white;
+  border-radius: 10%;
+  background-color: #5f5f5f;
+  color: white;
+  font-size: 2em;
+  font-family: 'Raleway', sans-serif;
+  padding: 5px 15px;
+  margin-right: 5px;
 }
 
 /*====== Formularios ======*/

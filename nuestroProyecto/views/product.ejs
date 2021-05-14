@@ -9,14 +9,15 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= product.nombre%></h2> 
-			<p class="product-detail-description1">
-				<a href="http://localhost:3000/product-add" >Editar</a>
-			</p>
-			<form action="/borrar" method="POST">
-				<input type="hidden" name="id" value="<%= product.id %>">
-				<input type="submit" value="Borrar" class="botonBorrar">
-		  </form>
+			<h2 class="products-title"><%= product.nombre%></h2>
+			<div class="botones">
+				<a href="http://localhost:3000/product-add" class="product-detail-description1">Editar</a>
+				  </form>
+				<form action="/borrar" method="POST">
+					<input type="hidden" name="id" value="<%= product.id %>">
+					<input type="submit" value="Borrar" class="botonBorrar">
+			  </form>
+			</div>
 		</div>
 		<div class="product-detail">
 			<div class="row">
