@@ -60,13 +60,28 @@
 							</button>
 						</form>
 					</li> -->
+					<% if(! logueado) { %>
 					<li>
-						<a href="http://localhost:3000/register">Creá tu cuenta <i class="far fa-address-card"></i>
+						<form action="/register">
+							<input type="submit" value="Crea tu cuenta">
+						  </form>
+					</li>
+					<li>
+						<form action="/login">
+							<input type="submit" value="Ingresa">
+						  </form>
+					</li>
+					<% } else { %>
+						<li><a href="http://localhost:3000/profile">  <%= usuario %><i class="fas fa-user"></i>
 						</a>
-					</li>
-					<li>
-						<a href="http://localhost:3000/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-					</li>
+						</li>
+						<li>
+						<form action="/logout">
+							<input type="submit" value="Exit">
+						  </form>
+						</li>
+					<% } %>
+	  
 				</ul>
 			</nav>
 		</div>

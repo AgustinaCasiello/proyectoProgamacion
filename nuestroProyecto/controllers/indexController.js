@@ -93,6 +93,7 @@ const controller = {
             res.redirect('/product/:id');
         });
     },
+    
 };
  
 module.exports = controller; 
