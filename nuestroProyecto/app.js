@@ -42,8 +42,8 @@ app.use(session( {
 const db = require('./database/models');
 
 app.use(function(req, res, next) {
-  if(req.cookies.userId && !req.session.usuario) {
-    db.Usuario.findByPk(req.cookies.userId).then(resultado => {
+  if(req.cookies.idUsuario && !req.session.usuario) {
+    db.Usuario.findByPk(req.cookies.idUsuario).then(resultado => {
       req.session.usuario = resultado.name;
       return next();
     });
@@ -67,47 +67,6 @@ app.use(function(req, res, next) {
 
 	return next();
 });
-// Habilitamos a express a usar sesiones (req.session.abc)
-
-const session = require('express-session');
-
-app.use(session( {
-  secret: "login Fasten",
-	resave: false,
-	saveUninitialized: true
-}));
-
-// Leer la cookie y loguear al usuario, si no esta logueado (no esta cargado en la sesion)
-
-const db = require('./database/models');
-
-app.use(function(req, res, next) {
-  if(req.cookies.userId && !req.session.usuario) {
-    db.Usuario.findByPk(req.cookies.userId).then(resultado => {
-      req.session.usuario = resultado.name;
-      return next();
-    });
-  } else {
-  	return next();
-  }}
-);
-
-// Cargamos variables en locals, para que puedan ser usadas en todas las vistas (por ej, logueado)
-
-app.use(function(req, res, next) {
-  if(req.session.usuario){
-    res.locals = {
-      logueado: true
-    }
-  } else {
-    res.locals = {
-      logueado: false
-    }
-  }
-
-	return next();
-});
-
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);

@@ -10,7 +10,9 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             field: "nombre"
         },
-        
+        contrasena : {
+            type: dataTypes.STRING
+        }
        
     },{
         tableName: "usuarios",
