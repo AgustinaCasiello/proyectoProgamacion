@@ -15,7 +15,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="col-7-col-md-6">
-				<form action="/editar" method="POST" class="search-form">
+				<form action="/product/editar" method="POST" class="search-form">
 					<p>
 						<label class="form-label" for="nombre">Nombre</label>
 						<input class= "form-input" type="text" name="nombre">
@@ -35,7 +35,7 @@
 					</p>
 					<p>
                         <input type="hidden" name="id" value="<%= autoEditado.id %>">
-                        <input type="submit" value="editar">                  
+                        <input type="submit" value="editar">        
 					</p>
 						
 				</form>		
