@@ -54,15 +54,6 @@ const controller = {
         })
         .catch(error => console.log(error));
     },
-    editar: (req, res) => {
-        db.Producto.update({
-            where: {
-                id: req.body.id,
-            }
-        }).then((productoEditado) => {
-            res.redirect('/product/' + productoEditado)
-        })
-    },
     login: (req,res) => {
         res.render('login');
     },
@@ -123,7 +114,7 @@ const controller = {
     },
     
     editarGet : (req,res) => {
-        db.Producto.findByPk(req.query.id).then(autoEdit=>{
+        db.Producto.findByPk(req.query.id).then(autoEdit =>{
             res.render ('productEdit',{autoEditado: autoEdit})
         })
     },
@@ -138,8 +129,9 @@ const controller = {
                 id: req.body.id
             }
         }).then(productoMod => {
-            res.redirect('/productEdit?id=');
-        });
+            res.redirect('/product/' + productoMod.id);
+        })
+        .catch(error => console.log(error));
     },
 
 };
