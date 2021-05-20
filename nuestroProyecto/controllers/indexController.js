@@ -3,6 +3,8 @@ let db = require('../database/models');
 const Op = db.Sequelize.Op;
 
 const controller = {
+    // Validar si la sesion tiene un usuario cargado (si el usuario hizo login)
+        // En donde se hace el if para validar?
     index: (req, res) => {
         db.Producto.findAll({ 
             order: [
@@ -63,10 +65,46 @@ const controller = {
         })
     },
     login: (req,res) => {
-        res.render('login', {title: 'Login'});
+        res.render('login');
     },
+    loginFiltrado: (req, res) => {
+        const filtro = {
+            where: [{
+                nombre: req.body.nombre,
+                mail : req.body.mail
+            }]
+        }
+        db.Usuario.findOne(filtro).then(usuario => {
+            
+            if(bcrypt.compareSync(req.body.contrasena, usuario.contrasena)){
+                req.session.usuario = usuario.nombre;
+                if(req.body.remember){
+                    res.cookie('idUsuario', usuario.id, { maxAge: 1000 * 60 * 5 });
+                }
+            }
+            res.redirect('/');
+        });
+    },
+    exit: (req, res) => {
+        // Borramos la sesion del servidor
+        req.session.destroy();
+        // Eliminamos la cookie del cliente
+        res.clearCookie('idUsuario');
+        res.redirect('/');
+    },
+
     register: (req,res) => {
         res.render('register');
+    },
+    registerPost : (req,res)=> {
+        let cEncriptada = bcrypt.hashSync(req.body.contrasena);
+        db.Producto.create({
+            nombre : req.body.nombre,
+            mail: req.body.mail,
+            contrasena : cEncriptada
+        }).then (usuario =>{
+            res.redirect('/');
+        });
     },
     product: (req,res) => {
         let idProducto = req.params.id; 
@@ -84,6 +122,7 @@ const controller = {
     profileEdit: (req,res) => {
         res.render('profile-edit', {title: 'ProfileEdit'});
     },
+    
     editarGet : (req,res) => {
         db.Producto.findByPk(req.query.id).then(autoEdit=>{
             res.render ('productEdit',{autoEditado: autoEdit})
@@ -99,10 +138,11 @@ const controller = {
             where: {
                 id: req.body.id
             }
-        }).then(() => {
-            res.redirect('/product/:id');
+        }).then(productoMod => {
+            res.redirect('/productEdit?id=');
         });
     },
+
 };
  
 module.exports = controller; 

@@ -4,13 +4,13 @@
 <%- include('./partials/head') %>
 <body>
 	<!-- Header -->
-	<%- include("partials/headerLogueado") %>
+	<%- include("partials/header") %>
 	<!-- /Header -->
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= product.nombre%></h2> 
-			<form action="/editar" method="GET">
+			<form action="/productEdit" method="GET">
 				<input type="hidden" name="id" value="<%= product.id %>">
 				<input type="submit" value="editar" class="botonEditar">
 			</form>
