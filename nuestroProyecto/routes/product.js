@@ -4,7 +4,7 @@ let controllers = require('../controllers/indexController');
 
 router.get('/', controllers.product)
 router.get('/:id', controllers.product);
-router.post('/editar', controllers.editarPost);
+router.post('/editar', controllers.editarPost); //??
 
 
 module.exports = router;
