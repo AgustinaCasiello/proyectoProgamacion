@@ -62,21 +62,21 @@
 					</li> -->
 					<% if(! logueado) { %>
 					<li>
-						<form action="/register">
+						<form action="/users/register">
 							<input type="submit" value="Crea tu cuenta">
 						  </form>
 					</li>
 					<li>
-						<form action="/login">
+						<form action="/users/login">
 							<input type="submit" value="Ingresa">
 						  </form>
 					</li>
 					<% } else { %>
-						<li><a href="http://localhost:3000/profile">  <%= usuario %><i class="fas fa-user"></i>
+						<li><a href="http://localhost:3000/users/profile">  <%= usuario %><i class="fas fa-user"></i>
 						</a>
 						</li>
 						<li>
-						<form action="/logout">
+						<form action="/users/logout">
 							<input type="submit" value="Exit">
 						  </form>
 						</li>

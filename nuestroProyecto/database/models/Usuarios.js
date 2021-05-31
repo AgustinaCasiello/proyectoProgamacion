@@ -11,12 +11,12 @@ module.exports = (sequelize, dataTypes) => {
             field: "nombre"
         },
         contrasena : {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
         }
        
     },{
         tableName: "usuarios",
-        timestamps: false,
+        timestamps: false, //"By default, Sequelize will add the attributes createdAt and updatedAt to your model so you will be able to know when the database entry went into the db and when it was updated last."
     });
 
     return Usuario; 

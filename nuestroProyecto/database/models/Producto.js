@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
         },
     },{
         tableName: "productos",
-        timestamps: false,
+        timestamps: false, //"By default, Sequelize will add the attributes createdAt and updatedAt to your model so you will be able to know when the database entry went into the db and when it was updated last."
     });
 
     return Produ; 
