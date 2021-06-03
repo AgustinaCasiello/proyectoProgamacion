@@ -15,6 +15,6 @@ router.post('/editar', controllers.editarPost);
 router.post('/borrar', controllers.borrar);
 
 
-router.get('/search-results', controllers.buscar);
+
 
 module.exports = router;
