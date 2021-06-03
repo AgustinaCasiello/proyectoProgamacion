@@ -1,25 +1,25 @@
 
 module.exports = (sequelize, dataTypes) => {
-    const Produ = sequelize.define('Producto', {
+    const Produ = sequelize.define('Producto', {  
         id: {
             autoIncrement: true,
             primaryKey: true,
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
         },
         nombre: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
         },
         image_URL: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
         },
         fecha_creacion: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
         }, 
         id_usuario:{
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
         },
         descripcion: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
         },
     },{
         tableName: "productos",

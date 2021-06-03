@@ -45,7 +45,8 @@ const controller = {
             where: {
                 id: req.body.id,
             }
-        })//.then(() => {
+        })
+        //.then(() => {
             //let alerta = prompt("¿Seguro de que deseas eliminar el producto?");
             //if(alerta == null || alerta == "")
         //})
