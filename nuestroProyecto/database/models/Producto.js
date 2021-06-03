@@ -25,6 +25,12 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "productos",
         timestamps: false, //"By default, Sequelize will add the attributes createdAt and updatedAt to your model so you will be able to know when the database entry went into the db and when it was updated last."
     });
+    /*Produ.associate = (db) => {
+        Produ.belongsTo(db.productos, {
+            as: 'nombre', //Para indicar como vamos a hacer referencia a esa relación más adelante, en donde querramos utilizarlo
+            foreignKey: 'id_usuario',
+        });
+    };*/
 
     return Produ; 
 }
