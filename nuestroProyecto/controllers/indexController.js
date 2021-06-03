@@ -37,7 +37,7 @@ const controller = {
             fecha_creacion : req.body.fecha_creacion,
             image_URL: req.body.image_URL,
         }).then(productoAgregado => {
-            res.redirect('/product/' + productoAgregado.id)
+            res.redirect('/product/product/' + productoAgregado.id)
         }) 
     },
     borrar: (req, res) => {
@@ -51,7 +51,7 @@ const controller = {
             //if(alerta == null || alerta == "")
         //})
         .then(() => {
-            res.redirect('/')
+            res.redirect('http://localhost:3000/')
         })
         .catch(error => console.log(error));
     },
@@ -129,8 +129,8 @@ const controller = {
             where: {
                 id: req.body.id
             }
-        }).then(productoMod => {
-            res.redirect('/product/' + productoMod.id);
+        }).then(productomodificado=> {
+            res.redirect('/product/product/' + productomodificado.id);
         })
         .catch(error => console.log(error));
     },
