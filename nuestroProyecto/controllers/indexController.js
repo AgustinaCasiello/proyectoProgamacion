@@ -1,5 +1,6 @@
 let db = require('../database/models');
 const Op = db.Sequelize.Op;
+const bcrypt = require('bcryptjs');
 
 const controller = {
     // Validar si la sesion tiene un usuario cargado (si el usuario hizo login)
@@ -69,7 +70,7 @@ const controller = {
             
             if(bcrypt.compareSync(req.body.contrasena, usuario.contrasena)){
                 req.session.usuario = usuario.nombre;
-                if(req.body.remember){
+                if(req.body.recordar){
                     res.cookie('idUsuario', usuario.id, { maxAge: 1000 * 60 * 5 });
                 }
             }
@@ -104,7 +105,7 @@ const controller = {
         });
     },
     profile: (req,res) => {
-        res.render('profile', {autos: autos.lista});
+        res.render('profile'); //{autos: autos.lista}
     },
     productAdd: (req,res) => {
         res.render('product-add', {title: 'ProductAdd'});
