@@ -90,12 +90,13 @@ const controller = {
     },
     registerPost : (req,res)=> {
         let cEncriptada = bcrypt.hashSync(req.body.contrasena);
-        db.Producto.create({
+        db.Usuario.create({
             nombre : req.body.nombre,
-            mail: req.body.mail,
+            text : req.body.text,
+            fecha : req.body.fecha,
             contrasena : cEncriptada
         }).then (usuario =>{
-            res.redirect('/');
+            res.redirect('/' );
         });
     },
     product: (req,res) => {
