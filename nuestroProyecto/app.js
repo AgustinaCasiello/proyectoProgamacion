@@ -40,7 +40,7 @@ const db = require('./database/models');
 app.use(function(req, res, next) {
   if(req.cookies.idUsuario && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.idUsuario).then(resultado => {
-      req.session.usuario = resultado.nombre;
+      req.session.usuario = resultado.name;
       return next();
     });
   } else {
