@@ -96,7 +96,7 @@ const controller = {
             fecha : req.body.fecha,
             contrasena : cEncriptada
         }).then (usuario =>{
-            res.redirect('/' );
+            res.redirect('/');
         });
     },
     product: (req,res) => {
