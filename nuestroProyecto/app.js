@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const session = require('express-session');
 
 app.use(session( {
-  secret: "sistema de login",
+  secret: "login Fasten",
 	resave: false,
 	saveUninitialized: true
 }));
@@ -40,7 +40,7 @@ const db = require('./database/models');
 app.use(function(req, res, next) {
   if(req.cookies.idUsuario && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.idUsuario).then(resultado => {
-      req.session.usuario = resultado.name;
+      req.session.usuario = resultado.nombre;
       return next();
     });
   } else {

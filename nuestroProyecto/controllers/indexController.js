@@ -75,7 +75,8 @@ const controller = {
                 }
             }
             res.redirect('/');
-        });
+        })
+        .catch(error1 => console.log(error1));
     },
     exit: (req, res) => {
         // Borramos la sesion del servidor
