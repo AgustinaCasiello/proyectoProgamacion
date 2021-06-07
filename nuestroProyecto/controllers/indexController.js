@@ -60,10 +60,10 @@ const controller = {
         res.render('login');
     },
     loginFiltrado: (req, res) => {
+
         const filtro = {
             where: [{
-                nombre: req.body.nombre,
-                mail : req.body.mail
+            text : req.body.text,
             }]
         }
         db.Usuario.findOne(filtro).then(usuario => {
