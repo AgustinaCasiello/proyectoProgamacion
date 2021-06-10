@@ -18,6 +18,9 @@ const controller = {
         .catch(error => {
             console.log(error)
         })
+
+
+
     },
     buscar: (req, res) => {
         let filtro = {
@@ -62,14 +65,17 @@ const controller = {
     loginFiltrado: (req, res) => {
 
         const filtro = {
-            where: [{
-            text : req.body.text,
-            }]
+            where: {
+            text : req.body.text
+            }
         }
         db.Usuario.findOne(filtro).then(usuario => {
             
             if(bcrypt.compareSync(req.body.contrasena, usuario.contrasena)){
-                req.session.usuario = usuario.nombre;
+                req.session.usuario = usuario.text;
+                req.session.id = usuario.id;
+                req.session.nombre = usuario.nombre;
+
                 if(req.body.recordar){
                     res.cookie('idUsuario', usuario.id, { maxAge: 1000 * 60 * 5 });
                 }
@@ -107,7 +113,13 @@ const controller = {
         });
     },
     profile: (req,res) => {
-        res.render('profile'); //{autos: autos.lista}
+        if (req.session.usuario) {
+            res.render('profile', {usuario: req.session.usuario}); //{autos: autos.lista}
+
+        } else {
+            res.render('profile', {usuario: "no registrado"}); //{autos: autos.lista}
+ 
+        }
     },
     productAdd: (req,res) => {
         res.render('product-add', {title: 'ProductAdd'});
