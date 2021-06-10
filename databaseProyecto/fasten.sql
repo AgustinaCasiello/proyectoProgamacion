@@ -37,6 +37,11 @@ ADD contrasena VARCHAR(50) NOT NULL;
 ALTER TABLE usuarios
 ADD mail VARCHAR(50) NOT NULL;
 
+ALTER TABLE usuarios
+DROP contrasena;
+ALTER TABLE usuarios
+ADD contrasena VARCHAR(200) NOT NULL;
+
 INSERT INTO usuarios VALUES (DEFAULT,('2021-01-29'),'diego33@gmail.com',3,'Diego33');
 INSERT INTO usuarios VALUES (DEFAULT,('2002-03-03'),'Franco@gmail.com',5,'FRancoSantoro');
 INSERT INTO usuarios VALUES (DEFAULT,('2001-09-09'),'Anamaria@gmail.com',21,'AnamariaMarcela');

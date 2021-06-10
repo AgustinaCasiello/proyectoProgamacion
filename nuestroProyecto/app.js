@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
   if(req.cookies.idUsuario && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.idUsuario).then(resultado => {
       req.session.usuario = resultado.text;
-      req.session.id = resultado.id;
+      req.session.userId = resultado.id;
       return next();
     });
   } else {

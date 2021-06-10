@@ -70,14 +70,18 @@ const controller = {
             }
         }
         db.Usuario.findOne(filtro).then(usuario => {
-            
+            console.log(usuario);
+            console.log(req.body.contrasena);
+            console.log(usuario.contrasena);
+            console.log(bcrypt.compareSync(req.body.contrasena, usuario.contrasena));
             if(bcrypt.compareSync(req.body.contrasena, usuario.contrasena)){
                 req.session.usuario = usuario.text;
-                req.session.id = usuario.id;
+                req.session.userId = usuario.id;
                 req.session.nombre = usuario.nombre;
-
+                console.log("la contrasena esta bien");
                 if(req.body.recordar){
                     res.cookie('idUsuario', usuario.id, { maxAge: 1000 * 60 * 5 });
+                    
                 }
             }
             res.redirect('/');
@@ -97,6 +101,8 @@ const controller = {
     },
     registerPost : (req,res)=> {
         let cEncriptada = bcrypt.hashSync(req.body.contrasena);
+        console.log(req.body.contrasena);
+        console.log(cEncriptada);
         db.Usuario.create({
             nombre : req.body.nombre,
             text : req.body.text,
