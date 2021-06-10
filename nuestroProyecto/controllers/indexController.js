@@ -70,10 +70,6 @@ const controller = {
             }
         }
         db.Usuario.findOne(filtro).then(usuario => {
-            console.log(usuario);
-            console.log(req.body.contrasena);
-            console.log(usuario.contrasena);
-            console.log(bcrypt.compareSync(req.body.contrasena, usuario.contrasena));
             if(bcrypt.compareSync(req.body.contrasena, usuario.contrasena)){
                 req.session.usuario = usuario.text;
                 req.session.userId = usuario.id;
@@ -101,8 +97,7 @@ const controller = {
     },
     registerPost : (req,res)=> {
         let cEncriptada = bcrypt.hashSync(req.body.contrasena);
-        console.log(req.body.contrasena);
-        console.log(cEncriptada);
+
         db.Usuario.create({
             nombre : req.body.nombre,
             text : req.body.text,
