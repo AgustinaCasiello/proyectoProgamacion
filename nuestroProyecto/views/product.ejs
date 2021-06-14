@@ -36,7 +36,7 @@
 							<img src="/images/users/martu.jpg" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="http://localhost:3000/profile"><%= element.Cuser.nombre%></a> </strong>
+								<strong> <a href="http://localhost:3000/users/profile/<%= element.Cuser.id%>"><%= element.Cuser.nombre%></a> </strong>
 								<%= element.text%></p>
 							</div>
 						</article>
@@ -47,8 +47,9 @@
 					
 						<% } else { %>
 							<form class="form" action="/product/product/<%= product.id%>" method="POST">
-								<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="text">
-						        <button type="button" class="buy-now-button agregar" id="agregar">AGREGAR COMENTARIO</button>
+								<input type="hidden" name="id_producto" value="<%= product.id %>">
+								<input class="form-input" type="text"  placeholder="Agregar comentario" name="text">
+						        <input type="submit" class="buy-now-button agregar" id="agregar" value="Agregar Comentario"></input>
 							</form>
 						<% } %>
 					

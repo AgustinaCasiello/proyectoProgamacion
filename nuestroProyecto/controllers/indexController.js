@@ -40,6 +40,7 @@ const controller = {
             descripcion: req.body.descripcion,
             fecha_creacion : req.body.fecha_creacion,
             image_URL: req.body.image_URL,
+
         }).then(productoAgregado => {
             res.redirect('/product/product/' + productoAgregado.id)
         }) 
@@ -111,7 +112,7 @@ const controller = {
         const filtro = {
             include : [
                 {association: 'comentarioP', include:'Cuser', order: [
-                    ['text', 'DESC']
+                    ['createdAt', 'DESC']
                 ],}
             ],
            
@@ -123,29 +124,28 @@ const controller = {
     },
     agregarComen: (req,res)=>{
         db.Comentarios.create({
-            text: req.body.text
+            text: req.body.text,
+            id_producto : req.params.id ,
+            id_usuario : req.session.idUsuario
+
         }).then(comenAgregado => {
-            res.redirect('/product/product/' + productoAgregado.id)
+            res.redirect('/product/product/' + req.params.id)
         }) 
     },
     profile: (req,res) => {
-        let filtro = [
-            {association: 'UserProdu'}
-        ]
+        let filtro = {
+            include: [
+                {association: 'UserProdu'}
+            ] 
+           
+        }
 
         db.Usuario.findByPk(req.params.id, filtro).then(resultado =>{
             console.log(resultado.toJSON());
             res.render('profile', {usuario: resultado})
         })
         
-        
-        /*if (req.session.usuario) {
-            res.render('profile', {usuario: req.session.usuario}); //{autos: autos.lista}
-
-        } else {
-            res.render('profile', {usuario: "no registrado"}); //{autos: autos.lista}
-
-        }*/
+    
     },
     profileUser: (req,res) => {
     console.log('hola');
