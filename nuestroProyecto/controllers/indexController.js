@@ -108,7 +108,13 @@ const controller = {
     },
     product: (req,res) => {
         let idProducto = req.params.id; 
-       db.Producto.findByPk(idProducto).then(resultado =>{
+        const filtro = {
+            include : [
+                {association: 'comentarioP', include:'Cuser'}
+            ]
+        }
+       db.Producto.findByPk(idProducto, filtro).then(resultado =>{
+        //console.log(resultado.toJSON());
         res.render('product', {product: resultado})
         });
     },
