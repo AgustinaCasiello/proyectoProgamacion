@@ -31,48 +31,17 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<article>
+						<% product.comentarioP.forEach(element =>{%>
+						  <article>
 							<img src="/images/users/martu.jpg" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="http://localhost:3000/profile">Martina Rosales</a> </strong>
-								 ¡Tremendo auto! ¿Se puede comprar con bitcoins?</p>
+								<strong> <a href="http://localhost:3000/profile"><%= element.Cuser.nombre%></a> </strong>
+								<%= element.text%></p>
 							</div>
 						</article>
-						<article>
-							<img src="/images/users/dopo.jpg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="http://localhost:3000/profile">Francisco Lopez</a> </strong>
-									¡Es el auto que me compró papá!¡¡Me encanta!!</p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/luli.jpg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="http://localhost:3000/profile">Lucía Castro Nevares</a> </strong>
-									Considero que es un auto sobrevaluado, el precio no hace alusión a la calidad que se jactan de ofrecer.
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/pilargonzales.jpg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="http://localhost:3000/profile">Pilar Gonzalez </a> </strong>
-									Muy conforme con lo ofrecido!</p>
-							</div>
-						</article>
-						<article>
-							<img src="/images/users/pedroperez.jpg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="http://localhost:3000/profile">Pedro Perez </a> </strong>
-									Estos jovenes que gastan plata en cualquier cosa...</p>
-							</div>
-						</article>
-
+						<%})%>
+					
 					</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">

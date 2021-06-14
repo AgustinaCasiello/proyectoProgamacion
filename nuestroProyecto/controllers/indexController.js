@@ -117,7 +117,7 @@ const controller = {
            
         }
        db.Producto.findByPk(idProducto, filtro).then(resultado =>{
-        //console.log(resultado.toJSON());
+        console.log(resultado.toJSON());
         res.render('product', {product: resultado})
         });
     },
