@@ -121,6 +121,13 @@ const controller = {
         res.render('product', {product: resultado})
         });
     },
+    agregarComen: (req,res)=>{
+        db.Comentarios.create({
+            text: req.body.text
+        }).then(comenAgregado => {
+            res.redirect('/product/product/' + productoAgregado.id)
+        }) 
+    },
     profile: (req,res) => {
         let filtro = [
             {association: 'UserProdu'}
