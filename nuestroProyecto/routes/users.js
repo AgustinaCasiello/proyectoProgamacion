@@ -6,7 +6,8 @@ let db = require('../database/models')
 
 router.get('/profile-edit', controllers.profileEdit);
 
-router.get('/profile', controllers.profile);
+
+router.get('/profile', controllers.profileUser);
 router.get('/profile/:id', controllers.profile);
 
 

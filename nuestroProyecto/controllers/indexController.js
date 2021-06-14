@@ -73,7 +73,7 @@ const controller = {
             
             if(bcrypt.compareSync(req.body.contrasena, usuario.contrasena)){
                 req.session.usuario = usuario.text;
-                req.session.id = usuario.id;
+                req.session.idUsuario = usuario.id;
                 req.session.nombre = usuario.nombre;
 
                 if(req.body.recordar){
@@ -110,8 +110,11 @@ const controller = {
         let idProducto = req.params.id; 
         const filtro = {
             include : [
-                {association: 'comentarioP', include:'Cuser'}
-            ]
+                {association: 'comentarioP', include:'Cuser', order: [
+                    ['text', 'DESC']
+                ],}
+            ],
+           
         }
        db.Producto.findByPk(idProducto, filtro).then(resultado =>{
         //console.log(resultado.toJSON());
@@ -119,13 +122,38 @@ const controller = {
         });
     },
     profile: (req,res) => {
-        if (req.session.usuario) {
+        let filtro = [
+            {association: 'UserProdu'}
+        ]
+
+        db.Usuario.findByPk(req.params.id, filtro).then(resultado =>{
+            console.log(resultado.toJSON());
+            res.render('profile', {usuario: resultado})
+        })
+        
+        
+        /*if (req.session.usuario) {
             res.render('profile', {usuario: req.session.usuario}); //{autos: autos.lista}
 
         } else {
             res.render('profile', {usuario: "no registrado"}); //{autos: autos.lista}
- 
+
+        }*/
+    },
+    profileUser: (req,res) => {
+    console.log('hola');
+        let filtro = {
+            include: [
+                {association: 'UserProdu'}
+            ] 
+           
         }
+
+        db.Usuario.findByPk(req.session.idUsuario, filtro).then(resultado =>{
+            console.log(resultado.toJSON());
+            res.render('profile', {usuario: resultado})
+        })
+
     },
     productAdd: (req,res) => {
         res.render('product-add', {title: 'ProductAdd'});
