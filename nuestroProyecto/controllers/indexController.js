@@ -102,7 +102,8 @@ const controller = {
             nombre : req.body.nombre,
             text : req.body.text,
             fecha : req.body.fecha,
-            contrasena : cEncriptada
+            contrasena : cEncriptada,
+            foto : req.file.filename
         }).then (usuario =>{
             res.redirect('/');
         });
