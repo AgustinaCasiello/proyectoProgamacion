@@ -19,28 +19,32 @@
 				<form action="/users/register" method="POST" class="search-form" enctype="multipart/form-data">
 					<p>
 						<label class="form-label" for="nombre">Nombre de usuario:</label>
-						<input class= "form-input" type="text" name="nombre">
+						<input class= "form-input" type="text" name="nombre" required>
 					</p>
 					<p>
 						<label class="form-label" for="mail">Email:</label>
-						<input class= "form-input" type="email" name="text">
+						<input class= "form-input" type="email" name="text" required>
 					</p>
 					<p>
 						<label class="form-label" for="file">Foto de Perfil:</label>
-						<input class= "form-input" type="file" name="foto">
+						<input class= "form-input" type="file" name="foto" required>
 					</p>
 					<p>
 						<label class="form-label" for="contra">Contraseña:</label>
-						<input class= "form-input" type="password" name="contrasena">
+						<input class= "form-input" type="password" name="contrasena" required>
 					</p>
 					<p>
 						<label class="form-label" for="fecha">Fecha de nacimiento:</label>
-						<input class= "form-input" type="date" name="fecha">
+						<input class= "form-input" type="date" name="fecha" required>
 					</p>
 					<p>
 						<input class= "form-input" type="submit" value="Enviar">
 					</p>
 						
+					<% if (errors) { %>
+					 	<p style="color: red;"><%= errors%></p>
+					<% } %>
+
 				</form>
 			</div>
 		</div>

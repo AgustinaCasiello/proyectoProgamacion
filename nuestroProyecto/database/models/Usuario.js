@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
         },
         foto:{
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
         }
     },{
         tableName: "usuarios",
