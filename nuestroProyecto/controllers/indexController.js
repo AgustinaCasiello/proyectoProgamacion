@@ -52,8 +52,8 @@ const controller = {
         })
     },
     borrar: (req, res) => {
-
-        db.Producto.destroy({
+        if (req.session.usuario == req.session.idUsuario) {
+            db.Producto.destroy({
                 where: {
                     id: req.body.id,
                 }
@@ -65,7 +65,7 @@ const controller = {
             .then(() => {
                 res.redirect('/')
             })
-            .catch(error => console.log(error));
+        }    
     },
     login: (req, res) => {
         if (req.session.usuario != undefined) {
