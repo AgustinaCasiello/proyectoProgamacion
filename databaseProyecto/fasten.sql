@@ -34,11 +34,13 @@ fecha_creacion DATE,
 id_usuario INT UNSIGNED,
 id_producto INT UNSIGNED,
 mail VARCHAR(200) NOT NULL,
+foto VARCHAR(200) NOT NULL,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-FOREIGN KEY (id_producto) REFERENCES productos(id)
+FOREIGN KEY (id_producto) REFERENCES productos(id),
+FOREIGN KEY (foto) REFERENCES productos(id_usuario)
 );
 
 INSERT INTO usuarios VALUES (DEFAULT,('2021-01-29'),'diego33@gmail.com','Diego33','hola123','dopo.jpg', DEFAULT, DEFAULT);
@@ -63,46 +65,46 @@ INSERT INTO productos VALUES (DEFAULT,'/images/autos/giulia.jpg','Alfa Romeo Giu
 INSERT INTO productos VALUES (DEFAULT,'https://i.blogs.es/b51f1c/mercedes-amg-a-45-4matic-2019-40-p/1366_2000.jpg','Mercedes Benz A45 Amg',('2021-01-09'),9,'El Mercedes-AMG A 45 S 4MATIC+ de 421 caballos es el Mercedes-Benz Clase A más potente y cuesta 74 000 euros. Su aspecto, si no se recurre a la lista de opciones, no dista mucho del que se puede conseguir en cualquier Clase A con el paquete decorativo opcional AMG Line. Sin embargo hay algo en su estética que delata que estamos ante un vehículo muy especial. Quizá sea la parrilla y las entradas de aire inferiores, que tienen un diseño exclusivo.', DEFAULT, DEFAULT);
 INSERT INTO productos VALUES (DEFAULT,'https://automotiva.com.ar/wp-content/uploads/2018/05/Mercedes-Benz_E63_AMG-7.jpg','Mercedes Benz E63 Amg',('2021-01-20'),10,'Motor naftero V8 4.0 biturbo, con 612 cv de potencia y 850 Nm de torque. Caja automática de nueve velocidades y tracción integral 4Matic+, que incluye distribución completa de torque (incluyendo tracción 100% trasera) y Drifting Mode (ver video abajo). Acelera de 0 a 100 km/h en 3,4 segundos y su velocidad máxima está limitada a 250 km/h.', DEFAULT, DEFAULT);
 
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-20'),1,1,'Recomendable', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-04'),1,1,'Esta bueno', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-20'),1,1,'Prefiero esperar al nuevo modelo', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-03'),1,1,'Ya no lo recomiendo', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-03'),1,2,'No es recomendable', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-13'),3,2,'No me gusto', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-02-20'),5,2,'Es lindo', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),10,2,'Me parece lento', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),10,3,'Me parece rapido', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-03-14'),9,3,'Me parece rapido', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),5,3,'Lo quiero cambiar.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),5,3,'Lo quiero cambiar.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),7,4,'aMe arrepenti, alto diseño', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-10'),10,4,'Querria saber cuantos años de duracion tiene', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-09'),1,4,'No me termina de convencer', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-15'),7,4,'Buen color', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-12'),10,5,'Parece del futuro', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),1,5,'Esta para ponerlo al sopi', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-10'),1,5,'Es horrible', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-03-29'),2,5,'Quien me lo regala?', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-02-22'),4,6,'Me parece bastante lindo', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),2,6,'Es electrico?', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),5,6,'El auto de mis sueños', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-03-29'),1,6,'Parece carisimo. ', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-02-22'),2,7,'Prefiero un modelo mas viejo.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),8,7,'No me gusta.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),10,7,'El auto de mis sueños.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-23'),3,7,'Es hermoso', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-22'),4,8,'Prefiero un modelo mas viejo.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-03-11'),8,8,'No lo compro ni ahi', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),9,8,'Auto feisimo', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-23'),3,8,'Es hermoso', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-22'),4,9,'Ojala alguien me lo regale.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-03-11'),8,9,'No se para que veo si no tengo plata', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),9,9,'El color que tiene lo hace ver hermoso', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-02'),3,9,'Viene con 8 velocidades?', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-01-25'),4,10,'Lo cambiaria por un modelo mas viejo.', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-02-11'),8,10,'No se para que veo si no tengo plata', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-03-01'),9,10,'Lo quiero', DEFAULT, DEFAULT);
-INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),2,10,'Es electrico?', DEFAULT, DEFAULT); -- DEFAULT, DEFAULT para que se cree el createdAt y updatedAt
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-20'),1,1,'Recomendable', 'dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-04'),1,1,'Esta bueno','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-20'),1,1,'Prefiero esperar al nuevo modelo','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-03'),1,1,'Ya no lo recomiendo','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-03'),1,2,'No es recomendable','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-13'),3,2,'No me gusto','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-02-20'),5,2,'Es lindo','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),10,2,'Me parece lento','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),10,3,'Me parece rapido','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-03-14'),9,3,'Me parece rapido','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),5,3,'Lo quiero cambiar.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),5,3,'Lo quiero cambiar.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-09'),7,4,'aMe arrepenti, alto diseño','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-10'),10,4,'Querria saber cuantos años de duracion tiene','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-09'),1,4,'No me termina de convencer','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-15'),7,4,'Buen color','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-12'),10,5,'Parece del futuro','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),1,5,'Esta para ponerlo al sopi','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-10'),1,5,'Es horrible','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-03-29'),2,5,'Quien me lo regala?','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-02-22'),4,6,'Me parece bastante lindo','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),2,6,'Es electrico?','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),5,6,'El auto de mis sueños','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-03-29'),1,6,'Parece carisimo. ','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-02-22'),2,7,'Prefiero un modelo mas viejo.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),8,7,'No me gusta.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),10,7,'El auto de mis sueños.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-23'),3,7,'Es hermoso','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-22'),4,8,'Prefiero un modelo mas viejo.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-03-11'),8,8,'No lo compro ni ahi','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),9,8,'Auto feisimo','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-23'),3,8,'Es hermoso','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-22'),4,9,'Ojala alguien me lo regale.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-03-11'),8,9,'No se para que veo si no tengo plata','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-01'),9,9,'El color que tiene lo hace ver hermoso','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-02'),3,9,'Viene con 8 velocidades?','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-01-25'),4,10,'Lo cambiaria por un modelo mas viejo.','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-02-11'),8,10,'No se para que veo si no tengo plata','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-03-01'),9,10,'Lo quiero','dopo.jpg', DEFAULT, DEFAULT);
+INSERT INTO comentarios VALUES (DEFAULT,('2021-04-11'),2,10,'Es electrico?','dopo.jpg', DEFAULT, DEFAULT); -- DEFAULT, DEFAULT para que se cree el createdAt y updatedAt
 
 
 

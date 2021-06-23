@@ -8,6 +8,9 @@ module.exports = (sequelize, dataTypes) => {
         mail: {
             type: dataTypes.STRING,
         },
+        foto: {
+            type: dataTypes.STRING,
+        },
         id_usuario: {
             type: dataTypes.INTEGER
         },
@@ -26,7 +29,11 @@ module.exports = (sequelize, dataTypes) => {
         });
         Comentarios.belongsTo(db.Usuario,{
             as: 'Cuser',
-            foreignKey: 'id_usuario'
+            foreignKey: 'id_usuario',
+        });
+        Comentarios.belongsTo(db.Usuario,{
+            as: 'Fuser',
+            foreignKey: 'foto',
         });
     };
 

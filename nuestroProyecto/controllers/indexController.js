@@ -173,6 +173,9 @@ const controller = {
                 },
                 {
                     association: 'userP'
+                },
+                {
+                    association: 'Fuser',
                 }
             ],
 
@@ -195,22 +198,18 @@ const controller = {
         })
     },
     profile: (req, res) => {
-        let filtro = {
+        const filtro = {
             include: [
                 {association: 'UserProdu'},
                 {association: 'comentarioUser'}
             ]
-
         }
-
         db.Usuario.findByPk(req.params.id, filtro).then(resultado => {
             console.log(resultado.toJSON());
             res.render('profile', {
                 usuario: resultado
             })
         })
-
-
     },
     profileUser: (req, res) => {
         console.log('hola');
