@@ -8,7 +8,7 @@
   --dark-blue: #c7c7c7;
   --light-blue: #c7c7c7;
   --gray: #d6d4d4;
-  --light-gray: #5f5f5f;
+  --light-gray: #000000;
   --green: #39b54a;
   --base-font-family: 'Roboto', sans-serif
 }
@@ -132,7 +132,6 @@ a.main-header_credit-link{
 
 .main-navbar {
   margin-top: 10px;
-  display: none;
   color: white
 }
 
@@ -200,6 +199,11 @@ a.main-header_credit-link{
 
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
+}
+
+.product-box_image:hover{
+  background-color: rgb(143, 0, 0);
+  
 }
 
 .product-box_data {
