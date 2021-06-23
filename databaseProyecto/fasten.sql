@@ -24,7 +24,7 @@ descripcion VARCHAR(5000) NOT NULL,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-FOREIGN KEY (id_usuario) REFERENCES usuarios(id) -- porque es un uno a muchos
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE -- porque es un uno a muchos
 );
 
 
@@ -39,8 +39,7 @@ createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-FOREIGN KEY (id_producto) REFERENCES productos(id),
-
+FOREIGN KEY (id_producto) REFERENCES productos(id)
 );
 
 INSERT INTO usuarios VALUES (DEFAULT,('2021-01-29'),'diego33@gmail.com','Diego33','hola123','dopo.jpg', DEFAULT, DEFAULT);
