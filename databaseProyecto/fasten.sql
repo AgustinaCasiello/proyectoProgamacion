@@ -40,7 +40,7 @@ updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
 FOREIGN KEY (id_producto) REFERENCES productos(id),
-FOREIGN KEY (foto) REFERENCES productos(id_usuario)
+
 );
 
 INSERT INTO usuarios VALUES (DEFAULT,('2021-01-29'),'diego33@gmail.com','Diego33','hola123','dopo.jpg', DEFAULT, DEFAULT);
