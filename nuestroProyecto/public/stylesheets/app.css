@@ -177,6 +177,7 @@ a.main-header_credit-link{
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .products-title {
@@ -493,7 +494,6 @@ div.container .products-wrapper {
 
 /*====== Formularios ======*/
 .search-form{
-  display: flex;
   flex-direction: column;
 }
 .col-7-col-md-6{
@@ -507,6 +507,7 @@ div.container .products-wrapper {
   display: inline-block;
   font-size: 1.6em;
   margin: 10px 0;
+  color: white;
 }
 
 .form-input {
