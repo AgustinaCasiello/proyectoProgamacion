@@ -6,22 +6,29 @@ const controller = {
     // Validar si la sesion tiene un usuario cargado (si el usuario hizo login)
     // En donde se hace el if para validar?
     index: (req, res) => {
-        db.Producto.findAll({
+            let filtro = { 
                 order: [
-                    ['nombre', 'ASC'],
+                    ['createdAt', 'DESC'],
                 ],
-                limit: 20
-            }).then(resultado => {
-                res.render('index', {
-                    autos: resultado
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-
-
-
+                include:{
+                    association: 'userP'
+                },
+                limit: 4
+            } 
+            let filtro2 =  { 
+                order: [
+                ['createdAt', 'ASC'],
+            ],
+            include:{
+                association: 'userP'
+            },
+            limit: 4        
+        }
+        db.Producto.findAll(filtro).then(resultado => { 
+            db.Producto.findAll(filtro2).then(resultado2 => {
+                res.render ('index', {autos: resultado, autosViejos: resultado2});
+            });
+        });
     },
     buscar: (req, res) => {
         let filtro = {
@@ -29,12 +36,24 @@ const controller = {
                 nombre: {
                     [Op.like]: '%' + req.query.search + '%'
                 }
-            }
+            }, 
+            include:{
+                association: 'userP'
+            },
         }
-
-        db.Producto.findAll(filtro).then(resultado => {
-            res.render('search-results', {
-                lista: resultado
+        let filtro2 = {
+            where: {
+                descripcion: {
+                    [Op.like]: '%' + req.query.search + '%'
+                }
+            }, 
+            include:{
+                association: 'userP'
+            },
+        }
+        db.Producto.findAll(filtro).then(resultado => { 
+            db.Producto.findAll(filtro2).then(resultado2 => {
+                res.render ('search-results', {lista: resultado, lista2: resultado2});
             });
         });
 
