@@ -193,9 +193,6 @@ const controller = {
                 {
                     association: 'userP'
                 },
-                {
-                    association: 'Fuser',
-                }
             ],
 
         }
