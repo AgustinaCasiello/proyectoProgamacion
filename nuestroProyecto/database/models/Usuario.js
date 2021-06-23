@@ -17,6 +17,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         text : {
             type: dataTypes.STRING,
+            //es el mail
         },
         foto:{
             type: dataTypes.STRING,

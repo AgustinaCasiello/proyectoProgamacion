@@ -198,9 +198,10 @@ const controller = {
     },
     profile: (req, res) => {
         let filtro = {
-            include: [{
-                association: 'UserProdu'
-            }]
+            include: [
+                {association: 'UserProdu'},
+                {association: 'comentarioUser'}
+            ]
 
         }
 
@@ -216,9 +217,10 @@ const controller = {
     profileUser: (req, res) => {
         console.log('hola');
         let filtro = {
-            include: [{
-                association: 'UserProdu'
-            }]
+            include: [
+                {association: 'UserProdu'},
+                {association: 'comentarioUser'}
+            ]
 
         }
 
