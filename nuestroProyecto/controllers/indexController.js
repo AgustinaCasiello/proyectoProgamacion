@@ -100,7 +100,7 @@ const controller = {
 
                     if (req.body.recordar) {
                         res.cookie('idUsuario', usuario.id, {
-                            maxAge: 1000 * 60 * 5
+                            maxAge: 1000 * 60 * 20
                         });
                     }
                     res.redirect('/');
