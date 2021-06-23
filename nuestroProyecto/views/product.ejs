@@ -41,7 +41,7 @@
 							<div class="data">
 								<p class="user">
 								<strong> <a href="http://localhost:3000/users/profile/<%= element.Cuser.id%>"><%= element.Cuser.nombre%></a> </strong>
-								<%= element.text%></p>
+								<%= element.mail%></p>
 							</div>
 						</article>
 						<%})%>
@@ -52,7 +52,7 @@
 						<% } else { %>
 							<form class="form" action="/product/product/<%= product.id%>" method="POST">
 								<input type="hidden" name="id_producto" value="<%= product.id %>">
-								<input class="form-input" type="text"  placeholder="Agregar comentario" name="text">
+								<input class="form-input" type="text"  placeholder="Agregar comentario" name="mail">
 						        <input type="submit" class="buy-now-button agregar" id="agregar" value="Agregar Comentario"></input>
 							</form>
 						<% } %>

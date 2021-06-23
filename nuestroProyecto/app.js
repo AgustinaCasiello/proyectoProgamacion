@@ -40,7 +40,7 @@ const db = require('./database/models');
 app.use(function(req, res, next) {
   if(req.cookies.idUsuario && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.idUsuario).then(usuario => {
-      req.session.usuario = usuario.text;
+      req.session.usuario = usuario.mail;
       req.session.idUsuario = usuario.id;
       req.session.nombre = usuario.nombre;
       return next();

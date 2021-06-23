@@ -15,7 +15,7 @@ module.exports = (sequelize, dataTypes) => {
         fecha : {
             type : dataTypes.DATE,
         },
-        text : {
+        mail : {
             type: dataTypes.STRING,
             //es el mail
         },

@@ -80,11 +80,11 @@ const controller = {
 
         const filtro = {
             where: {
-                text: req.body.text,
+                mail: req.body.mail,
             }
         }
 
-        if (!req.body.text || !req.body.contrasena) { //para que salte error si está vacío algún campo
+        if (!req.body.mail || !req.body.contrasena) { //para que salte error si está vacío algún campo
             return res.render('login', {
                 errors: "El campo no puede estar vacío"
             });
@@ -94,7 +94,7 @@ const controller = {
 
                 if (usuario && bcrypt.compareSync(req.body.contrasena, usuario.contrasena)) { // SI existe el usuario + compara la contraseña del inicio de sesión con la que estaba en la base de datos
 
-                    req.session.usuario = usuario.text;
+                    req.session.usuario = usuario.mail;
                     req.session.idUsuario = usuario.id;
                     req.session.nombre = usuario.nombre;
 
@@ -132,7 +132,7 @@ const controller = {
     },
     registerPost: (req, res) => {
 
-        if (!req.body.text || !req.body.nombre || !req.body.fecha || !req.body.contrasena) { //para que salte error si está vacío algún campo
+        if (!req.body.mail || !req.body.nombre || !req.body.fecha || !req.body.contrasena) { //para que salte error si está vacío algún campo
             return res.render('register', {
                 errors: "El campo no puede estar vacío"
             });
@@ -140,7 +140,7 @@ const controller = {
 
         db.Usuario.findOne({ //si ya existe un usuario con ese mail no me puedo registrar
             where: {
-                text: req.body.text,
+                mail: req.body.mail,
             }
         }).then(usuario => {
             if (usuario) {
@@ -151,7 +151,7 @@ const controller = {
                 let cEncriptada = bcrypt.hashSync(req.body.contrasena);
                 db.Usuario.create({
                     nombre: req.body.nombre,
-                    text: req.body.text,
+                    mail: req.body.mail,
                     fecha: req.body.fecha,
                     contrasena: cEncriptada,
                     foto: req.file.filename
@@ -160,8 +160,6 @@ const controller = {
                 });
             }
         })
-
-
     },
     product: (req, res) => {
         let idProducto = req.params.id;
@@ -188,7 +186,7 @@ const controller = {
     },
     agregarComen: (req, res) => {
         db.Comentarios.create({
-            text: req.body.text,
+            mail: req.body.mail,
             id_producto: req.params.id,
             id_usuario: req.session.idUsuario
 
