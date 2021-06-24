@@ -139,10 +139,6 @@ const controller = {
                     id: req.body.id,
                 }
             })
-            //.then(() => {
-            //let alerta = prompt("¿Seguro de que deseas eliminar el producto?");
-            //if(alerta == null || alerta == "")
-            //})
             .then(() => {
                 res.redirect('/')
             })
