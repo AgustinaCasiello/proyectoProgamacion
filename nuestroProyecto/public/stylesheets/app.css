@@ -272,6 +272,16 @@ a.main-header_credit-link{
   text-align: center
 }
 
+.misProductos{
+  max-width: 80%;
+  align-items: center;
+}
+
+.col-lg-3{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 .product-box:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
