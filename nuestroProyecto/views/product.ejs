@@ -14,24 +14,20 @@
 			<% if(logueado && product.userP.id == idUsuario) {%>
 				<form action="/product/productEdit" method="GET">
 					<input type="hidden" name="id" value="<%= product.id %>">
-					<input type="submit" value="editar" class="botonEditar">
+					<input type="submit" value="editar" class="botonBorrar">
 				</form>
-				<!--<p class="product-detail-description1">
-					<a href="http://localhost:3000/product-add" >Editar</a>
-				</p>-->
 				<form action="/product/borrar" method="POST">
 					<input type="hidden" name="id" value="<%= product.id %>">
 					<input type="submit" value="Borrar" class="botonBorrar">
 			  </form>
 			<% } %>
-
 		</div>
+		<p class="product-detail-user">Agregado por <%= product.userP.nombre %></p>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/autos/<%= product.image_URL%>" alt="" class="product-detail-img">
 					<p class="product-detail-description"><%= product.descripcion%></p>
-					<p>Agregado por <%= product.userP.nombre %>  </p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
