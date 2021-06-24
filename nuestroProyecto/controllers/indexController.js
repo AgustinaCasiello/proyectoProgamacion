@@ -240,7 +240,7 @@ const controller = {
         }
 
         db.Usuario.findByPk(req.session.idUsuario, filtro).then(resultado => {
-            console.log(resultado.toJSON());
+            //console.log(resultado.toJSON());
             res.render('profile', {
                 usuario: resultado
             })
@@ -277,7 +277,7 @@ const controller = {
                     id: req.body.id
                 }
             }).then(productomodificado => {
-                res.redirect('/product/product/' + productomodificado.id);
+                res.redirect('/product/product/' + req.body.id);
             })
             .catch(error => console.log(error));
     },
