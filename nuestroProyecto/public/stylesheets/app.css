@@ -177,13 +177,20 @@ a.main-header_credit-link{
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  text-align: center;
+  font-family: 'Sulphur Point', sans-serif;
+  color: white;
+}
+
+.products-title.index{
+  text-align: left;
+  margin-bottom: auto;
+  border-bottom: 1px solid rgb(126, 2, 2);
 }
 
 .product-box {
@@ -219,13 +226,6 @@ a.main-header_credit-link{
   font-size: 2.4em;
   margin: 0;
   font-family: 'Raleway', sans-serif;
-}
-
-h2.products-title {
-  font-family: 'Sulphur Point', sans-serif;
-  font-size: x-large;
-  margin-bottom: 0;
-  color: white;
 }
 
 .product-box_data span {
@@ -289,44 +289,29 @@ div.container .products-wrapper {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
   padding: 20px 0;
 }
 
 .footer-data {
   text-align: center;
+  width: 100%;
+  margin: auto;
+  color: rgb(155, 155, 155);
 }
 
 .footer-data i {
-  color: var(--light-blue);
-  font-size: 3.5em;
+  font-size: 1.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
-  font-size: 2.4em;
+  font-size: 1.4em;
   font-weight: 400;
+  font-family: 'Raleway', sans-serif;
 }
 
 .footer-data p {
-  color: var(--gray);
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 300;
-}
-
-.sub-footer {
-  border-top: 1px solid var(--light-gray);
-  background-color: #ffffff;
-}
-
-.sub-footer p {
-  margin: 0;
-  color: var(--gray);
-  padding: 15px 0;
-}
-
-.row p{
-  font-family: 'Sulphur Point', sans-serif;
 }
 
 /*====== Product Detail ======*/
@@ -565,26 +550,6 @@ textarea.form-input {
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
-}
-
-/*Footer*/
-
-.footer-data {
-  width: 100%;
-  margin: auto;
-}
-
-.footer-data h2{
-  color: white;
-  font-family: 'Raleway', sans-serif;
-}
-
-.footer-data p{
-  color: white;
-}
-
-.footer-data .fas{
-  color: white;
 }
 
 /*====== Media-Queries ======*/

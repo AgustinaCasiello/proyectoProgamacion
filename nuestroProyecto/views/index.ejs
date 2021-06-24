@@ -16,7 +16,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Novedades</h2>
+				<h2 class="products-title index">Novedades</h2>
 			</div>
 			<div class="container products-wrapper">
 				<div class="row">
@@ -43,7 +43,7 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Más antiguos</h2>
+					<h2 class="products-title index">Más antiguos</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
 				<div class="container products-wrapper">
@@ -58,7 +58,7 @@
 										<article class="product-box_data">
 											<h2><%= element.nombre%></h2>
 											<p><%= element.descripcion%></p>
-											<a href="users/profile/<%= element.userP.id%>"><%= element.userP.nombre%></a>
+											<a href="users/profile/<%= element.userP.id%>" class="usuarios"><%= element.userP.nombre%></a>
 										</article>
 									</a>
 								</section>
