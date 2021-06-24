@@ -63,12 +63,17 @@ const controller = {
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
             fecha_creacion: req.body.fecha_creacion,
-            image_URL: req.body.image_URL,
+            image_URL: req.file.filename,
             id_usuario: req.session.idUsuario, //para que guarde qué usuario agregó creó el producto
 
         }).then(productoAgregado => {
             res.redirect('/product/product/' + productoAgregado.id)
         })
+    },
+    productAdd: (req, res) => {
+        res.render('product-add', {
+            title: 'ProductAdd'
+        });
     },
     borrar: (req, res) => {
         console.log(req.body.id_usuario);
@@ -247,12 +252,6 @@ const controller = {
         })
 
     },
-    productAdd: (req, res) => {
-        res.render('product-add', {
-            title: 'ProductAdd'
-        });
-    },
-
     profileEdit: (req, res) => {
         res.render('profile-edit', {
             title: 'ProfileEdit'

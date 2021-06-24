@@ -29,7 +29,7 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= product.image_URL%>" alt="" class="product-detail-img">
+					<img src="/images/autos/<%= product.image_URL%>" alt="" class="product-detail-img">
 					<p class="product-detail-description"><%= product.descripcion%></p>
 					<p>Agregado por <%= product.userP.nombre %>  </p>
 				</article>
@@ -40,7 +40,7 @@
 							<img src="/images/users/<%= element.Cuser.foto %>" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="http://localhost:3000/users/profile/<%= element.Cuser.id%>"><%= element.Cuser.nombre%></a> </strong>
+								<strong> <a href="/users/profile/<%= element.Cuser.id%>"><%= element.Cuser.nombre%></a> </strong>
 								<%= element.mail%></p>
 							</div>
 						</article>

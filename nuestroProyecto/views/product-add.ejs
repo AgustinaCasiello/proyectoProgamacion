@@ -15,7 +15,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="col-7-col-md-6">
-				<form action="" method="POST" class="search-form">
+				<form action="" method="POST" class="search-form" enctype="multipart/form-data">
 					<p>
 						<label class="form-label" for="nombre">Nombre</label>
 						<input class= "form-input" type="text" name="nombre">
@@ -29,9 +29,8 @@
 						<input class= "form-input" type="date" name="fecha_creacion">
 					</p>
 					<p>
-						<label class="form-label" for="nombre">Imagen</label>
-						<input class= "form-input" type="text" name="image_URL">
-
+						<label class="form-label" for="file">Imagen:</label>
+						<input class= "form-input" type="file" name="image_URL" required>
 					</p>
 					<p>
 					<input class= "form-input" type="submit" value="Enviar">
