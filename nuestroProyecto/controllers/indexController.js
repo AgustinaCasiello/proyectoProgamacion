@@ -71,7 +71,9 @@ const controller = {
         })
     },
     borrar: (req, res) => {
-        if (req.session.usuario == req.session.idUsuario) {
+        console.log(req.body.id_usuario);
+        console.log(req.session.userP);
+        if (req.body.id_usuario == req.session.userP) {
             db.Producto.destroy({
                 where: {
                     id: req.body.id,
