@@ -58,6 +58,29 @@ const controller = {
         });
 
     },
+    product: (req, res) => {
+        let idProducto = req.params.id;
+        const filtro = {
+            include: [{
+                    association: 'comentarioP',
+                    include: 'Cuser',
+                    order: [
+                        ['createdAt', 'DESC']
+                    ],
+                },
+                {
+                    association: 'userP'
+                },
+            ],
+
+        }
+        db.Producto.findByPk(idProducto, filtro).then(resultado => {
+            console.log(resultado.toJSON());
+            res.render('product', {
+                product: resultado
+            })
+        });
+    },
     crear: (req, res) => {
         db.Producto.create({
             nombre: req.body.nombre,
@@ -74,6 +97,38 @@ const controller = {
         res.render('product-add', {
             title: 'ProductAdd'
         });
+    },
+    editarGet: (req, res) => {
+        db.Producto.findByPk(req.query.id).then(autoEdit => {
+            res.render('productEdit', {
+                autoEditado: autoEdit
+            })
+        })
+    },
+    editarPost: (req, res) => {
+        db.Producto.update({
+                nombre: req.body.nombre,
+                descripcion: req.body.descripcion,
+                fecha_creacion: req.body.fecha_creacion,
+                image_URL: req.body.image_URL,
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(productomodificado => {
+                res.redirect('/product/product/' + req.body.id);
+            })
+            .catch(error => console.log(error));
+    },
+    agregarComen: (req, res) => {
+        db.Comentarios.create({
+            mail: req.body.mail,
+            id_producto: req.params.id,
+            id_usuario: req.session.idUsuario
+
+        }).then(comenAgregado => {
+            res.redirect('/product/product/' + req.params.id)
+        })
     },
     borrar: (req, res) => {
         console.log(req.body.id_usuario);
@@ -93,60 +148,6 @@ const controller = {
             })
         }    
     },
-    login: (req, res) => {
-        if (req.session.usuario != undefined) {
-            return res.redirect('/')
-        } else {
-            return res.render('login', {
-                errors: null
-            });
-        }
-    },
-    loginFiltrado: (req, res) => {
-
-        const filtro = {
-            where: {
-                mail: req.body.mail,
-            }
-        }
-
-        if (!req.body.mail || !req.body.contrasena) { //para que salte error si está vacío algún campo
-            return res.render('login', {
-                errors: "El campo no puede estar vacío"
-            });
-        }
-
-        db.Usuario.findOne(filtro).then(usuario => {
-
-                if (usuario && bcrypt.compareSync(req.body.contrasena, usuario.contrasena)) { // SI existe el usuario + compara la contraseña del inicio de sesión con la que estaba en la base de datos
-
-                    req.session.usuario = usuario.mail;
-                    req.session.idUsuario = usuario.id;
-                    req.session.nombre = usuario.nombre;
-
-                    if (req.body.recordar) {
-                        res.cookie('idUsuario', usuario.id, {
-                            maxAge: 1000 * 60 * 20
-                        });
-                    }
-                    res.redirect('/');
-                } else { //tanto el usuario como la contraseña pueden estar mal
-                    return res.render('login', {
-                        errors: "El mail o la contraseña son incorrectos"
-                    });
-                }
-            })
-            .catch(error1 => console.log(error1));
-
-    },
-    exit: (req, res) => {
-        // Borramos la sesion del servidor
-        req.session.destroy();
-        // Eliminamos la cookie del cliente
-        res.clearCookie('idUsuario');
-        res.redirect('/');
-    },
-
     register: (req, res) => {
         if (req.session.usuario != undefined) {
             return res.redirect('/')
@@ -187,38 +188,49 @@ const controller = {
             }
         })
     },
-    product: (req, res) => {
-        let idProducto = req.params.id;
-        const filtro = {
-            include: [{
-                    association: 'comentarioP',
-                    include: 'Cuser',
-                    order: [
-                        ['createdAt', 'DESC']
-                    ],
-                },
-                {
-                    association: 'userP'
-                },
-            ],
-
+    login: (req, res) => {
+        if (req.session.usuario != undefined) {
+            return res.redirect('/')
+        } else {
+            return res.render('login', {
+                errors: null
+            });
         }
-        db.Producto.findByPk(idProducto, filtro).then(resultado => {
-            console.log(resultado.toJSON());
-            res.render('product', {
-                product: resultado
-            })
-        });
     },
-    agregarComen: (req, res) => {
-        db.Comentarios.create({
-            mail: req.body.mail,
-            id_producto: req.params.id,
-            id_usuario: req.session.idUsuario
+    loginFiltrado: (req, res) => {
 
-        }).then(comenAgregado => {
-            res.redirect('/product/product/' + req.params.id)
-        })
+        const filtro = {
+            where: {
+                mail: req.body.mail,
+            }
+        }
+
+        if (!req.body.mail || !req.body.contrasena) { //para que salte error si está vacío algún campo
+            return res.render('login', {
+                errors: "El campo no puede estar vacío"
+            });
+        }
+        db.Usuario.findOne(filtro).then(usuario => {
+
+                if (usuario && bcrypt.compareSync(req.body.contrasena, usuario.contrasena)) { // SI existe el usuario + compara la contraseña del inicio de sesión con la que estaba en la base de datos
+
+                    req.session.usuario = usuario.mail;
+                    req.session.idUsuario = usuario.id;
+                    req.session.nombre = usuario.nombre;
+
+                    if (req.body.recordar) {
+                        res.cookie('idUsuario', usuario.id, {
+                            maxAge: 1000 * 60 * 20
+                        });
+                    }
+                    res.redirect('/');
+                } else { //tanto el usuario como la contraseña pueden estar mal
+                    return res.render('login', {
+                        errors: "El mail o la contraseña son incorrectos"
+                    });
+                }
+            })
+            .catch(error1 => console.log(error1));
     },
     profile: (req, res) => {
         const filtro = {
@@ -241,9 +253,7 @@ const controller = {
                 {association: 'UserProdu'},
                 {association: 'comentarioUser'}
             ]
-
         }
-
         db.Usuario.findByPk(req.session.idUsuario, filtro).then(resultado => {
             //console.log(resultado.toJSON());
             res.render('profile', {
@@ -257,30 +267,13 @@ const controller = {
             title: 'ProfileEdit'
         });
     },
-
-    editarGet: (req, res) => {
-        db.Producto.findByPk(req.query.id).then(autoEdit => {
-            res.render('productEdit', {
-                autoEditado: autoEdit
-            })
-        })
+    exit: (req, res) => {
+        // Borramos la sesion del servidor
+        req.session.destroy();
+        // Eliminamos la cookie del cliente
+        res.clearCookie('idUsuario');
+        res.redirect('/');
     },
-    editarPost: (req, res) => {
-        db.Producto.update({
-                nombre: req.body.nombre,
-                descripcion: req.body.descripcion,
-                fecha_creacion: req.body.fecha_creacion,
-                image_URL: req.body.image_URL,
-            }, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(productomodificado => {
-                res.redirect('/product/product/' + req.body.id);
-            })
-            .catch(error => console.log(error));
-    },
-
 };
 
 module.exports = controller;
