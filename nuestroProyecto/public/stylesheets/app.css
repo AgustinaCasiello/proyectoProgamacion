@@ -93,17 +93,22 @@ a.main-header_credit-link{
 .search-form {
   position: relative;
   display: flex;
-  align-items: center;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 20px;
 }
 
-.search-form_input {
+.search-form_input{
   border: solid 1px var(--light-gray);
   display: block;
-  width: 100%;
   padding: 7px 35px 7px 7px;
-  border-radius: 3px;
   height: 40px;
   font-size: 1.5em;
+}
+
+.login{
+  max-width: 50%;
+  margin: auto;
 }
 
 .search-form_button {
@@ -180,6 +185,7 @@ a.main-header_credit-link{
   text-align: center;
   font-family: 'Sulphur Point', sans-serif;
   color: white;
+  margin-bottom: 5fr;
 }
 
 .products-title.index{
@@ -206,7 +212,10 @@ a.main-header_credit-link{
 
 .product-box_image:hover{
   background-color: rgb(143, 0, 0);
-  
+}
+
+.product-box_image.ind{
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .product-box_data {
@@ -285,7 +294,7 @@ div.container .products-wrapper {
 }
 
 div.row.roww{
-  max-width: 960px;
+  max-width: 1050px;
   margin: auto;
 }
 
@@ -501,9 +510,13 @@ div.row.roww{
 }
 
 textarea.form-input {
-  min-height: 140px;
   resize: vertical;
   padding: 15px;
+}
+
+input.form-input{
+  background-color: rgba(114, 114, 114, 0.747);
+  max-height: 35px;
 }
 
 /*====== Profile ======*/
