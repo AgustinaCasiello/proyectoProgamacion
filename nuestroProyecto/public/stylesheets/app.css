@@ -174,10 +174,6 @@ a.main-header_credit-link{
 
 
 /*====== Products ======*/
-.products-wrapper {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
@@ -280,11 +276,18 @@ a.main-header_credit-link{
   box-shadow: 0 0 5px var(--green);
 }
 
+.container{
+  max-width: 1140px;
+}
 
 div.container .products-wrapper {
   margin-top: 0;
 }
 
+div.row.roww{
+  max-width: 960px;
+  margin: auto;
+}
 
 /*====== Footer ======*/
 .main-footer {
