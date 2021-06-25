@@ -31,31 +31,36 @@ const controller = {
         });
     },
     buscar: (req, res) => {
-        let filtro = {
+
+        db.Producto.findAll({
             where: {
-                nombre: {
-                    [Op.like]: '%' + req.query.search + '%'
+                [Op.or]: [{
+                    nombre: {
+                        [Op.like]: "%" + req.query.search + "%"
+                    }
+                }, 
+                {
+                    descripcion: {
+                        [Op.like]: "%" + req.query.search + "%"
+                    }
                 }
-            }, 
-            include:{
+            ]},
+            include: {
                 association: 'userP'
-            },
-        }
-        let filtro2 = {
-            where: {
-                descripcion: {
-                    [Op.like]: '%' + req.query.search + '%'
-                }
-            }, 
-            include:{
-                association: 'userP'
-            },
-        }
-        db.Producto.findAll(filtro).then(resultado => { 
-            db.Producto.findAll(filtro2).then(resultado2 => {
-                res.render ('search-results', {lista: resultado, lista2: resultado2});
+            }
+        }).then(resultado => { 
+            if(resultado != null) {
+                res.render ('search-results', {
+                    lista: resultado,
+                    respuesta: 'No existen resultados.'})
+            } else {
+                res.render('search-results', {
+                    lista: resultado,
+                    respuesta: null
+                })
+            }
+         
             });
-        });
 
     },
     product: (req, res) => {
