@@ -33,7 +33,7 @@ router.post('/product/:id?', controllers.agregarComen);
 
 router.get('/productEdit', controllers.editarGet);
 router.get('/editar', controllers.editarGet);
-router.post('/editar', controllers.editarPost);
+router.post('/editar', upload.single('image_URL'), controllers.editarPost);
 router.post('/borrar', controllers.borrar);
 
 

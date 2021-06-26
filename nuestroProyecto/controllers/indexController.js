@@ -66,18 +66,11 @@ const controller = {
     product: (req, res) => {
         let idProducto = req.params.id;
         const filtro = {
-            include: [{
-                    association: 'comentarioP',
-                    include: 'Cuser',
-                    order: [
-                        ['createdAt', 'DESC']
-                    ],
-                },
-                {
-                    association: 'userP'
-                },
+            include: [
+                {association: 'comentarioP',include: 'Cuser'},
+                {association: 'userP'}
             ],
-
+            order : [['comentarioP', 'createdAt', 'DESC']]
         }
         db.Producto.findByPk(idProducto, filtro).then(resultado => {
             console.log(resultado.toJSON());
@@ -104,18 +97,22 @@ const controller = {
         });
     },
     editarGet: (req, res) => {
-        db.Producto.findByPk(req.query.id).then(autoEdit => {
-            res.render('productEdit', {
-                autoEditado: autoEdit
-            })
-        })
+        if (req.body.id_usuario == req.session.userP) {
+            db.Producto.findByPk(req.query.id).then(autoEdit => {
+                res.render('productEdit', {
+                    autoEditado: autoEdit
+                })
+            }) 
+        } else{
+            res.redirect ('/')
+        }
     },
     editarPost: (req, res) => {
         db.Producto.update({
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 fecha_creacion: req.body.fecha_creacion,
-                image_URL: req.body.image_URL,
+                image_URL: req.file.filename,
             }, {
                 where: {
                     id: req.body.id
@@ -264,10 +261,26 @@ const controller = {
 
     },
     profileEdit: (req, res) => {
-        res.render('profile-edit', {
-            title: 'ProfileEdit'
-        });
+        db.Usuario.findByPk(req.query.id)
+        .then(resultado =>{
+            res.render('profile-edit', {usuarioEdit: resultado})
+        })
+       
     },
+    profileEditPost: (req, res) => {
+      db.Usuario.update({
+          nombre : req.body.nombre,
+          foto: req.file.filename
+      }, {
+          where: {
+              id: req.query.id
+          }
+      }).then (perfilEditado =>{
+          res.redirect('/');
+      })
+      .catch(error => console.log(error));
+    },
+
     exit: (req, res) => {
         // Borramos la sesion del servidor
         req.session.destroy();

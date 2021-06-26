@@ -23,6 +23,7 @@ const perfil = multer.diskStorage({
   });
 
 router.get('/profile-edit', controllers.profileEdit);
+router.post('/profile-edit',upload.single('foto'), controllers.profileEditPost)
 
 
 router.get('/profile', controllers.profileUser);
