@@ -287,7 +287,7 @@ const controller = {
           foto: req.file.filename
       }, {
           where: {
-              id: req.query.id
+              id: req.session.idUsuario
           }
       }).then (perfilEditado =>{
           res.redirect('/');
