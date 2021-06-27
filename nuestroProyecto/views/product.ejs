@@ -32,12 +32,13 @@
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 						<% product.comentarioP.forEach(element =>{%>
-						  <article>
+						  <article class="comentarioss">
 							<img src="/images/users/<%= element.Cuser.foto %>" alt="">
 							<div class="data">
 								<p class="user">
 								<strong> <a href="/users/profile/<%= element.Cuser.id%>"><%= element.Cuser.nombre%></a> </strong>
 								<%= element.mail%></p>
+								<button> Borrar</button>
 							</div>
 						</article>
 						<%})%>
