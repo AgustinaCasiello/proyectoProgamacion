@@ -116,10 +116,9 @@ const controller = {
         } else{
             res.redirect ('/')
         }
-
     },
     editarPost: (req, res) => {
-        
+
         db.Producto.update({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,

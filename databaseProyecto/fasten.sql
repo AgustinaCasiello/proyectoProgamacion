@@ -27,7 +27,6 @@ updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE -- porque es un uno a muchos
 );
 
-
 CREATE TABLE comentarios (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 fecha_creacion DATE,
