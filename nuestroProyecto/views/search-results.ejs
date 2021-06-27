@@ -14,27 +14,31 @@
 			<div class="col-12">
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
-			<% if (respuesta) { %>
-			<div>
-				<h2 class="products-title"><%= respuesta %></h2>
-			</div>
-			<% } %>
-			<% lista.forEach(element =>{%>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="product/product/<%= element.id%>">
-							<figure class="product-box_image">
-								<img src="/images/autos/<%= element.image_URL%>" alt="<%= element.nombre%>">
-							</figure>
-							<article class="product-box_data">
-								<h2><%= element.nombre%></h2>
-								<p><%= element.descripcion%></p>
-								<a href="users/profile/<%= element.userP.id%>"><%= element.userP.nombre%></a>
-							</article>
-						</a>
-					</section>
+			<% if (error) { %>
+				<div>
+					<h2 class="products-title"> <%= error %> </h2>
 				</div>
-				<%})%>
+			
+			<% } else { %>
+				
+				<% resultado.forEach(element =>{%>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+							<a href="product/product/<%= element.id%>">
+								<figure class="product-box_image">
+									<img src="/images/autos/<%= element.image_URL%>" alt="<%= element.nombre%>">
+								</figure>
+								<article class="product-box_data">
+									<h2><%= element.nombre%></h2>
+									<p><%= element.descripcion%></p>
+									<a href="users/profile/<%= element.userP.id%>"><%= element.userP.nombre%></a>
+								</article>
+							</a>
+						</section>
+					</div>
+					<%})%>
+				<%}%>
+
 				
 			<%- include('./partials/footer') %>
 </body>

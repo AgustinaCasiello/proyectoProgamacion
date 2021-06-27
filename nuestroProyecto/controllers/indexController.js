@@ -31,36 +31,50 @@ const controller = {
         });
     },
     buscar: (req, res) => {
-
-        db.Producto.findAll({
-            where: {
-                [Op.or]: [{
-                    nombre: {
-                        [Op.like]: "%" + req.query.search + "%"
-                    }
-                }, 
-                {
-                    descripcion: {
-                        [Op.like]: "%" + req.query.search + "%"
-                    }
-                }
-            ]},
-            include: {
-                association: 'userP'
+        let filtro2 = {
+    where: {
+        [Op.or]: [{
+            nombre: {
+                [Op.like]: "%" + req.query.search + "%"
             }
-        }).then(resultado => { 
-            if(resultado != null) {
-                res.render ('search-results', {
-                    lista: resultado,
-                    respuesta: 'No existen resultados.'})
-            } else {
+        }, 
+        {
+            descripcion: {
+                [Op.like]: "%" + req.query.search + "%"
+            }
+        }
+    ]},
+    include: {
+        association: 'userP'
+    }
+}
+
+        db.Producto.findAll(filtro2).then(resultado => { 
+            if(resultado == '' || req.query.search == "" ) {
+                console.log('no hay resultados');
+                console.log(req.query.search);
+
+                console.log(JSON.stringify(resultado))
+
                 res.render('search-results', {
-                    lista: resultado,
-                    respuesta: null
+                    resultado: resultado,
+                    error: 'No existen resultados.',
+                    
+                });
+                
+            } else {
+                console.log(JSON.stringify(resultado))
+                console.log('si hay resultados');
+                res.render('search-results', {
+                    resultado: resultado,
+                    error: null
+                    
+              
                 })
             }
+            
          
-            });
+            }) .catch(errorsearch => console.log(errorsearch));;
 
     },
     product: (req, res) => {
