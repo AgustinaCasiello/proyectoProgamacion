@@ -10,19 +10,17 @@ const controller = {
                 order: [
                     ['createdAt', 'DESC'],
                 ],
-                include:{
-                    association: 'userP'
-                },
+                include:
+                    {association: 'userP'},
                 limit: 4
             } 
             let filtro2 =  { 
                 order: [
                 ['createdAt', 'ASC'],
-            ],
-            include:{
-                association: 'userP'
-            },
-            limit: 4        
+                ],
+                include:
+                    { association: 'userP'},
+                limit: 4        
         }
         db.Producto.findAll(filtro).then(resultado => { 
             db.Producto.findAll(filtro2).then(resultado2 => {
@@ -72,7 +70,7 @@ const controller = {
               
                 })
             }         
-            }) .catch(errorsearch => console.log(errorsearch));;
+            }) .catch(errorsearch => console.log(errorsearch));
 
     },
     product: (req, res) => {
@@ -250,7 +248,7 @@ const controller = {
     profile: (req, res) => {
         const filtro = {
             include: [
-                {association: 'UserProdu'},
+                {association: 'UserProdu', include: "comentarioP"},
                 {association: 'comentarioUser'}
             ]
         }
@@ -265,7 +263,7 @@ const controller = {
         console.log('hola');
         let filtro = {
             include: [
-                {association: 'UserProdu'},
+                {association: 'UserProdu', include: "comentarioP"},
                 {association: 'comentarioUser'}
             ]
         }
