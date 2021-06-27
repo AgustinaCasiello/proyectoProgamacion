@@ -71,9 +71,7 @@ const controller = {
                     
               
                 })
-            }
-            
-         
+            }         
             }) .catch(errorsearch => console.log(errorsearch));;
 
     },
@@ -122,7 +120,12 @@ const controller = {
         }
     },
     editarPost: (req, res) => {
-        db.Producto.update({
+        if (!req.body.nombre || !req.body.descripcion || !req.body.fecha_creacion || !req.file.filename) { //para que salte error si está vacío algún campo
+            return res.render('productEdit', {
+                errors: "El campo no puede estar vacío",
+            });
+        }else{
+            db.Producto.update({
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 fecha_creacion: req.body.fecha_creacion,
@@ -135,6 +138,7 @@ const controller = {
                 res.redirect('/product/product/' + req.body.id);
             })
             .catch(error => console.log(error));
+        }
     },
     agregarComen: (req, res) => {
         db.Comentarios.create({

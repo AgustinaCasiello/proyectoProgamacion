@@ -18,26 +18,28 @@
 				<form action="/product/editar" method="POST" class="search-form" enctype="multipart/form-data">
 					<p>
 						<label class="form-label" for="nombre">Nombre</label>
-						<input class= "form-input" type="text" name="nombre">
+						<input class= "form-input" type="text" name="nombre" value="<%= autoEditado.nombre %>">
 					</p>
 					<p>
 						<label class="form-label" for="nombre">Descripción</label>
-						<input class= "form-input" type="text" name="descripcion">
+						<input class= "form-input" type="text" name="descripcion" value="<%= autoEditado.descripcion %>">
 					</p>
 					<p>
 						<label class="form-label" for="nombre">Fecha de Creación</label>
-						<input class= "form-input" type="date" name="fecha_creacion">
+						<input class= "form-input" type="date" name="fecha_creacion" value="">
 					</p>
 					<p>
 						<label class="form-label" for="nombre">Imagen</label>
-						<input class= "form-input" type="file" name="image_URL">
+						<input class= "form-input" type="file" name="image_URL" value="<%= autoEditado.image_URL %>">
 
 					</p>
 					<p>
                         <input type="hidden" name="id" value="<%= autoEditado.id %>">
                         <input type="submit" value="editar">        
 					</p>
-					
+					<% if (errors) { %>
+						<p style="color: red;"><%= errors %></p>
+				   	<% } %>
 				</form>		
 			</div>	
 		</div>
