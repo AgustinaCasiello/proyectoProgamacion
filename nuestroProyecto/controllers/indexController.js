@@ -120,25 +120,24 @@ const controller = {
         }
     },
     editarPost: (req, res) => {
-        if (!req.body.nombre || !req.body.descripcion || !req.body.fecha_creacion || !req.file.filename) { //para que salte error si está vacío algún campo
+        if (!req.body.nombre || !req.body.descripcion || !req.body.fecha_creacion || !req.file) { //para que salte error si está vacío algún campo
             return res.render('productEdit', {
-                errors: "El campo no puede estar vacío",
+                error: "El campo no puede estar vacío",
             });
-        }else{
-            db.Producto.update({
-                nombre: req.body.nombre,
-                descripcion: req.body.descripcion,
-                fecha_creacion: req.body.fecha_creacion,
-                image_URL: req.file.filename,
-            }, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(productomodificado => {
-                res.redirect('/product/product/' + req.body.id);
-            })
-            .catch(error => console.log(error));
         }
+        db.Producto.update({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            fecha_creacion: req.body.fecha_creacion,
+            image_URL: req.file.filename,
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(productomodificado => {
+            res.redirect('/product/product/' + req.body.id);
+        })
+        .catch(error => console.log(error));
     },
     agregarComen: (req, res) => {
         db.Comentarios.create({
