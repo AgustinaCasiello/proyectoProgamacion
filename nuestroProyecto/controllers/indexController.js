@@ -116,13 +116,10 @@ const controller = {
         } else{
             res.redirect ('/')
         }
+
     },
     editarPost: (req, res) => {
-        if (!req.body.nombre || !req.body.descripcion || !req.body.fecha_creacion || !req.file) { //para que salte error si está vacío algún campo
-            return res.render('productEdit', {
-                error: "El campo no puede estar vacío",
-            });
-        }
+        
         db.Producto.update({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
@@ -136,6 +133,8 @@ const controller = {
             res.redirect('/product/product/' + req.body.id);
         })
         .catch(error => console.log(error));
+
+
     },
     agregarComen: (req, res) => {
         db.Comentarios.create({
