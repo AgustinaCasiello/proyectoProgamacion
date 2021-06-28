@@ -172,6 +172,9 @@ const controller = {
                 errors: "El campo no puede estar vacío"
             });
         }
+        if (req.body.contrasena.length < 4) {
+            return res.render ('register', {errors : "La contrasena debe tener mas de 4 caracteres"})
+        }
 
         db.Usuario.findOne({ //si ya existe un usuario con ese mail no me puedo registrar
             where: {
