@@ -30,8 +30,8 @@ const controller = {
     },
     buscar: (req, res) => {
         let filtro2 = {
-    where: {
-        [Op.or]: [{
+            where: {
+                [Op.or]: [{
             nombre: {
                 [Op.like]: "%" + req.query.search + "%"
             }
@@ -40,34 +40,22 @@ const controller = {
             descripcion: {
                 [Op.like]: "%" + req.query.search + "%"
             }
-        }
-    ]},
-    include: {
+        }]},
+        include: {
         association: 'userP'
+        }
     }
-}
-
         db.Producto.findAll(filtro2).then(resultado => { 
             if(resultado == '' || req.query.search == "" ) {
-                console.log('no hay resultados');
-                console.log(req.query.search);
-
-                console.log(JSON.stringify(resultado))
-
                 res.render('search-results', {
                     resultado: resultado,
                     error: 'No existen resultados.',
-                    
                 });
                 
             } else {
-                console.log(JSON.stringify(resultado))
-                console.log('si hay resultados');
                 res.render('search-results', {
                     resultado: resultado,
-                    error: null
-                    
-              
+                    error: null                 
                 })
             }         
             }) .catch(errorsearch => console.log(errorsearch));
@@ -83,7 +71,6 @@ const controller = {
             order : [['comentarioP', 'createdAt', 'DESC']]
         }
         db.Producto.findByPk(idProducto, filtro).then(resultado => {
-            console.log(resultado.toJSON());
             res.render('product', {
                 product: resultado
             })
@@ -136,18 +123,30 @@ const controller = {
 
     },
     agregarComen: (req, res) => {
-        db.Comentarios.create({
+        db.Comentario.create({
             mail: req.body.mail,
             id_producto: req.params.id,
-            id_usuario: req.session.idUsuario
+            id_usuario: req.session.idUsuario,           
 
         }).then(comenAgregado => {
             res.redirect('/product/product/' + req.params.id)
         })
+
     },
+
+    borrarComentario: (req, res) => {
+        db.Comentario.destroy({
+            where: {
+                id: req.body.id,
+            }
+        })
+        .then((comentarioBorrado) => {
+            res.redirect('/product/product/' + req.body.id_producto);
+            
+        })
+    },
+
     borrar: (req, res) => {
-        console.log(req.body.id_usuario);
-        console.log(req.session.userP);
         if (req.body.id_usuario == req.session.userP) {
             db.Producto.destroy({
                 where: {
@@ -251,14 +250,12 @@ const controller = {
             ]
         }
         db.Usuario.findByPk(req.params.id, filtro).then(resultado => {
-            console.log(resultado.toJSON());
             res.render('profile', {
                 usuario: resultado
             })
         })
     },
     profileUser: (req, res) => {
-        console.log('hola');
         let filtro = {
             include: [
                 {association: 'UserProdu', include: "comentarioP"},
@@ -266,7 +263,6 @@ const controller = {
             ]
         }
         db.Usuario.findByPk(req.session.idUsuario, filtro).then(resultado => {
-            //console.log(resultado.toJSON());
             res.render('profile', {
                 usuario: resultado
             })

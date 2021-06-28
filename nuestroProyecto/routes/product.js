@@ -28,12 +28,12 @@ router.post('/product-add', upload.single('image_URL'), controllers.crear);
 router.get('/', controllers.product);
 router.get('/product/:id?', controllers.product);
 router.post('/product/:id?', controllers.agregarComen);
+router.post('/borrarComentario', controllers.borrarComentario);
 
 
 router.get('/productEdit', controllers.editarGet);
 router.get('/editar', controllers.editarGet);
 router.post('/editar', upload.single('image_URL'), controllers.editarPost);
 router.post('/borrar', controllers.borrar);
-
 
 module.exports = router;

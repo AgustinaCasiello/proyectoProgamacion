@@ -29,7 +29,7 @@ module.exports = (sequelize, dataTypes) => {
             as: 'userP', //Para indicar como vamos a hacer referencia a esa relación más adelante, en donde querramos utilizarlo
             foreignKey: 'id_usuario',
         });
-        Produ.hasMany(db.Comentarios,{
+        Produ.hasMany(db.Comentario,{
             as:'comentarioP',
             foreignKey: 'id_producto'
         });

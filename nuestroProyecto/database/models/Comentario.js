@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const Comentarios = sequelize.define('Comentarios', {  
+    const Comentario = sequelize.define('Comentario', {  
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -22,17 +22,17 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "comentarios",
         timestamps: false, //"By default, Sequelize will add the attributes createdAt and updatedAt to your model so you will be able to know when the database entry went into the db and when it was updated last."
     });
-    Comentarios.associate = (db) => {
-        Comentarios.belongsTo(db.Producto, {
+    Comentario.associate = (db) => {
+        Comentario.belongsTo(db.Producto, {
             as: 'Cprodu', //Para indicar como vamos a hacer referencia a esa relación más adelante, en donde querramos utilizarlo
             foreignKey: 'id_producto',
         });
-        Comentarios.belongsTo(db.Usuario,{
+        Comentario.belongsTo(db.Usuario,{
             as: 'Cuser',
             foreignKey: 'id_usuario',
         });
         
     };
 
-    return Comentarios; 
+    return Comentario; 
 }

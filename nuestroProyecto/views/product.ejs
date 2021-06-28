@@ -38,7 +38,12 @@
 								<p class="user">
 								<strong> <a href="/users/profile/<%= element.Cuser.id%>"><%= element.Cuser.nombre%></a> </strong>
 								<%= element.mail%></p>
-								<button> Borrar</button>
+								<% if(logueado && idUsuario == element.Cuser.id) {%>
+									<form action="/product/borrarComentario" method="POST">
+										<input type="hidden" name="id" value="<%= element.id %>">
+										<button class="botonBorrar" type="submit"> Borrar </button>
+								  </form>
+								<% } %>
 							</div>
 						</article>
 						<%})%>
