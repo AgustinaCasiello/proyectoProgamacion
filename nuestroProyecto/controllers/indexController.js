@@ -268,13 +268,6 @@ const controller = {
 
     },
     profileEdit: (req, res) => {
-
-        if(!req.body.nombre || !req.filename) { //para que salte error si está vacío algún campo
-            return res.render('profile-edit', {
-                errors3: "El campo no puede estar vacío"
-            });
-        }
-        
         db.Usuario.findByPk(req.query.id)
         .then(resultado =>{
             res.render('profile-edit', {usuarioEdit: resultado})
