@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const Produ = sequelize.define('Producto', {  
+    const Produ = sequelize.define('Producto', { // → nombre que voy a usar dentro del controlador
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -21,7 +21,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
         },
     },{
-        tableName: "productos",
+        tableName: "productos", //Tiene que ser igual a lo que veo en workbrench / tabla de SQL
         timestamps: false, //"By default, Sequelize will add the attributes createdAt and updatedAt to your model so you will be able to know when the database entry went into the db and when it was updated last."
     });
     Produ.associate = (db) => {
