@@ -41,6 +41,7 @@
 								<% if(logueado && idUsuario == element.Cuser.id) {%>
 									<form action="/product/borrarComentario" method="POST">
 										<input type="hidden" name="id" value="<%= element.id %>">
+										<input type="hidden" name="id_producto" value="<%= element.id_producto %>">
 										<button class="botonBorrar" type="submit"> Borrar </button>
 								  </form>
 								<% } %>
@@ -49,7 +50,6 @@
 						<%})%>
 					</section>
 					<% if(! logueado) { %>
-					
 						<% } else { %>
 							<form class="form" action="/product/product/<%= product.id%>" method="POST">
 								<input type="hidden" name="id_producto" value="<%= product.id %>">

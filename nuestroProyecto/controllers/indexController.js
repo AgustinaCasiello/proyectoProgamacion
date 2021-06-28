@@ -140,7 +140,7 @@ const controller = {
             }
         })
         .then((comentarioBorrado) => {
-            res.redirect('/');
+            res.redirect('/product/product/' + req.body.id_producto);
         })
     },
 
