@@ -272,6 +272,13 @@ a.main-header_credit-link{
   align-items: center;
 }
 
+.errors{
+  color: rgb(26, 0, 0); 
+  font-size: 15px; 
+  font-weight: 500; 
+  background-color: red; 
+  text-align: center;
+}
 
 .container{
   max-width: 1140px;

@@ -59,7 +59,6 @@ const controller = {
                 })
             }         
             }) .catch(errorsearch => console.log(errorsearch));
-
     },
     product: (req, res) => {
         let idProducto = req.params.id;
@@ -142,7 +141,6 @@ const controller = {
         })
         .then((comentarioBorrado) => {
             res.redirect('/');
-            
         })
     },
 
