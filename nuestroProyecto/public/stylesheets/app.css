@@ -523,6 +523,8 @@ input.form-input{
 
 .foto-perfil{
   border-radius: 50%;
+  height: 130px;
+  width: 130px;
 }
 
 .main-title{
